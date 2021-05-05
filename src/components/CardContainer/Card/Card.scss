@@ -3,12 +3,12 @@
 .card {
     position: relative;
     text-align: center;
-    border-radius: 0.5pc;
+    border-radius: 0.7pc;
     @include themed('box-shadow', 'cardshadow');
     @include themed('background', 'card');
     @include all_transition_durations;
 
-    .tit {
+    .idea_text {
         font-weight: bold;
         font-size: 1.5pc;
         padding-top: 0.5pc;
@@ -18,7 +18,7 @@
         @include all_transition_durations;
     }
 
-    .dat_dur {
+    .user_id_text {
         font-weight: normal;
         font-size: 0.6pc;
         padding-top: 0.25pc;
@@ -28,7 +28,7 @@
         @include all_transition_durations;
     }
 
-    .pos, .loc, .link {
+    .upvotes_text {
         font-weight: normal;
         font-size: 0.8pc;
         text-align: justify;
@@ -49,7 +49,7 @@
     }
 
     .linkbtn {
-        padding: 0pc 1pc 0pc 1pc;
+        padding: 0pc 0.4pc 0pc 0.4pc;
         width: 1.5pc;
         cursor: pointer;
         @include themed('filter', 'iconinvert');
@@ -67,7 +67,7 @@
 @media only screen and (min-width: 600px) {
     .card{
         margin: 1pc auto;
-        padding: 2pc;
+        padding: 1pc;
         width: 30pc;
     }
 }

@@ -9,7 +9,7 @@
     .page_title {
         text-align: center;
         text-decoration: underline;
-        margin: 2pc auto;
+        margin: 0pc auto 3pc auto;
         font-size: 1.5pc;
         @include themed('color', 'accent');
     }

@@ -1,0 +1,42 @@
+import React, {useState, useContext} from "react";
+import { dbref } from '../../helpers/firebase.js';
+import { UserContext } from '../../providers/UserProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './AddIdea.scss';
+
+const AddIdea = (props) =>{
+    const user = useContext(UserContext);
+    const [idea, setIdea] = useState('');
+    const handleIdeaChange = event => { setIdea(event.target.value); };
+
+    const handleSubmit = () => {
+        if(idea === ''){
+            toast("Oops!\nPut an actual idea buddy", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
+                pauseOnHover: true, draggable: false, progress: undefined, })
+        }
+        else if(idea !== ''){
+            dbref.ref('posts').push({ user_id: '', idea: idea, upvotes: 0, utc:Date.now() });
+            setIdea('');
+            document.getElementsByClassName('idea_input')[0].value = ''
+            props.setPosted(props.posted + 1);
+            toast("Idea posted!", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
+                pauseOnHover: true, draggable: false, progress: undefined, });
+        }
+    };
+    
+    console.log(`user: ${JSON.stringify(user)}\n`);
+    if (user) {
+		return( 
+			<div className="addIdea_container">
+                <div className="addIdea">
+                    <input className="idea_input" type="text" placeholder="Add an idea" onChange={handleIdeaChange}/>
+                    <button className="postIdea" alt="Submit" onClick={handleSubmit}>Post</button>
+                </div>
+                <ToastContainer progressClassName="toastProgress" bodyClassName="toastBody" />
+            </div>
+		);
+	}
+}
+
+export default AddIdea;

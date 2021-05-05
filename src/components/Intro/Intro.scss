@@ -1,42 +1,93 @@
 @import "../../color-themes";
 
 .intro_wrapper {
-    height: 100%;
     padding: 1pc;
 
     .intro {
         position: relative;
-        text-align: justify;
-        padding-top: 2pc;
 
-        img {
-            display: block;
-            margin: 0 auto;
-            width: 6pc;
-            border-radius: 50%;
-            @include themed('box-shadow', 'imgshadow');
-            @include all_transition_durations;
+        .intro_head{
+            display: table;
+
+            .logo_img, .personal_img {
+                float: left;
+                margin: auto;
+                vertical-align: middle;
+                border-radius: 50%;
+                @include all_transition_durations;
+            }
+
+            h1{
+                float: left;
+            }
         }
 
-        h1, h2, h3 {
-            font-style: normal;
-            text-align: center;
-            margin: 0px;
+        h1, h2, p, a {
+            padding: 0.5pc;
             @include themed('color', 'text');
             @include all_transition_durations;
         }
+    }
+}
 
-        h1 {
-            font-size: 3pc;
-            padding: 0.5pc;
+//Desktop
+@media only screen and (min-width: 600px) {
+    .intro{
+        padding-top: 3pc;
+        text-align: center;
+        .intro_head{
+            margin: auto;
         }
-        h2 {
-            font-size: 2pc;
-            padding: 0.5pc;
+        .logo_img {
+            float: left;
+            display: block;
+            width: 4.5pc;
         }
-        h3 {
-            font-size: 1pc;
-            padding: 0.5pc;
+        .personal_img {
+            float: left;
+            width: 2pc;
+            background-color: white;
         }
+    }
+    .title, h2, p, a {
+        margin: auto 1pc;
+    }
+    .title {
+        font-size: 3pc;
+    }
+    h2 {
+        font-size: 2pc;
+    }
+    p, a {
+        font-size: 1pc;
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .intro{
+        padding-top: 1pc;
+        text-align: left;
+        .logo_img {
+            float: left;
+            display: none;
+            width: 4.5pc;
+        }
+        .personal_img {
+            float: right;
+            width: 3pc;
+        }
+    }
+    .title, h2, p, a {
+        margin: auto 0pc;
+    }
+    .title {
+        font-size: 3pc;
+    }
+    h2 {
+        font-size: 1pc;
+    }
+    p, a {
+        font-size: 0.5pc;
     }
 }

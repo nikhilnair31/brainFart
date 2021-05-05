@@ -1,0 +1,86 @@
+@import "../../color-themes";
+
+.login_wrapper {
+    position: relative;
+    text-align: center;
+
+    .login {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, 40%);
+        height: 25pc;
+        width: 25pc;
+        border-radius: 1pc;
+        @include themed('background-color', 'card');
+        
+        .login-provider-button {
+            border: 0pc;
+            border-radius: 1pc;
+            padding: 0pc;
+            margin: 1pc;
+            height: 3pc;
+            width: 80%;
+        }
+        h1 {
+            padding: 0.5pc;
+            @include themed('color', 'text');
+            @include all_transition_durations;
+        }
+    }
+
+    .base{
+        position: relative;
+
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .login{
+        h1 {
+            margin-top: 3pc;
+            font-size: 3pc;
+        }
+        
+        .login-provider-button {
+            border: 0pc;
+            border-radius: 50%;
+            padding: 0pc;
+            margin: 1pc;
+            height: 1pc;
+            width: 1pc;
+            .logo_img {
+                width: 5pc;
+            }
+        }
+    }
+
+    .base{
+        position: relative;
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .login{
+        h1 {
+            font-size: 3pc;
+        }
+    }
+
+    .base{
+        position: relative;
+
+        .login-provider-button {
+            border: 0pc;
+            border-radius: 50%;
+            padding: 0pc;
+            margin: 1pc;
+            height: 1pc;
+            width: 1pc;
+            .logo_img {
+                width: 5pc;
+            }
+        }
+    }
+}

@@ -1,0 +1,98 @@
+@import "../../color-themes";
+
+$banner_button_color: rgba(0, 0, 0, 0);
+$banner_blur_amount: 10px;
+
+.banner_wrapper {
+    height: 100%;
+
+    .banner {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        @include themed('background-color', 'banner');
+        backdrop-filter: blur($banner_blur_amount);
+        z-index: 1;
+
+        .title {
+            display: flex;
+            height: 100%;
+            @include themed('background-color', 'accent');
+            @include all_transition_durations;
+        
+            h1{
+                margin:auto;
+                font-size: 1pc;
+                cursor: pointer;
+                @include themed('color', 'alttext');
+                @include all_transition_durations;
+
+                &:hover{
+                    @include themed('color', 'text');
+                }
+            }
+        }
+        
+        .others {
+            margin-left: auto;
+            height: 100%;
+
+            .switch_button{
+                position: relative;
+                float: right;
+                border: 0pc;
+                height: 100%;
+                background-size: 50%;
+                background-color: $banner_button_color;
+                @include themed('background-color', 'accent');
+                @include all_transition_durations;
+            }
+        
+            button{
+                position: relative;
+                border: 0pc;
+                height: 100%;
+                cursor: pointer;
+                font-family: GothamLight;
+                background-color: $banner_button_color;
+                @include themed('color', 'text');
+                @include all_transition_durations;
+            }
+            
+            :hover{
+                @include themed('color', 'alttext');
+                @include themed('background-color', 'accent');
+            }
+        }
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .banner_wrapper {
+        .banner {
+            height: 8vh;
+            .title {
+                width: 10vw;
+            }
+        }
+    }
+    .banner_wrapper .banner .others button{
+        padding: 0.7pc 1pc;
+        width: 8pc;
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .banner_wrapper {
+        .banner {
+            display: none;
+        }
+    }
+    .banner_wrapper .banner .others button{
+        display: none;
+        padding: 0.7pc 1pc;
+        width: 8pc;
+    }
+}

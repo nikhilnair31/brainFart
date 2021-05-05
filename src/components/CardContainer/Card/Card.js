@@ -1,16 +1,13 @@
 import React from 'react';
-import Linkons from './Linkons/Linkons.js';
 import './Card.scss';
 
 const Card = (props) => {
-    return props.data.map(function(typedata) {
+    return props.full_data.map(function(post) {
         return (
-            <div className="card" key={typedata.id}>
-                <h2 className="tit" >{typedata.title}</h2>
-                {typedata.date !== '' && <h3 className="dat_dur" >{typedata.date} {typedata.duration}</h3>}
-                {typedata.position !== '' && <p className="pos" >{typedata.position}</p>}
-                {typedata.location !== '' && <p className="loc" >{typedata.location}</p>}
-                {(typedata.icon !== '' && typedata.link !== '') &&  <Linkons linkon_data={typedata.linkons}/>}
+            <div className="card" key={post.utc}>
+                <h2 className="idea_text" >{post.idea}</h2>
+                <p className="user_id_text" >user_id: {post.user_id}</p>
+                <p className="upvotes_text" >upvotes: {post.upvotes}</p>
             </div>
         );
     });
