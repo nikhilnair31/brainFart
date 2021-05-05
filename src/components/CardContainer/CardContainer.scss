@@ -1,0 +1,49 @@
+@import "../../color-themes";
+
+.page_container{
+    padding: 0.5pc 1pc;
+    position: relative;
+    justify-content: center;
+    @include all_transition_durations;
+
+    .page_title {
+        text-align: center;
+        text-decoration: underline;
+        margin: 2pc auto;
+        font-size: 1.5pc;
+        @include themed('color', 'accent');
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .page_container{
+        padding: 1pc;
+    }
+    // .grid_container {
+    //     display: grid;
+    //     grid-template-columns: repeat(3, 0.5fr);
+    // }
+    .page_container{
+        .page_title {
+            font-size: 1.5pc;
+        }
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .page_container{
+        padding: 1pc;
+    }
+    // .grid_container {
+    //     width: 100%;
+    //     height: auto;
+    //     margin: 0 auto;
+    // }
+    .page_container{
+        .page_title {
+            font-size: 1pc;
+        }
+    }
+}

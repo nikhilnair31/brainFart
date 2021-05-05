@@ -1,0 +1,29 @@
+@import "../../color-themes";
+
+$top_button_radius: 50%;
+
+.scrollTop {
+    position: fixed;
+    border: 0pc;
+    height: 3pc;
+    width: 3pc;
+    bottom: 1pc;
+    right: 1pc;
+    z-index: 5;
+    cursor: pointer;
+    border-radius: $top_button_radius;
+    animation: fade $transition_duration;
+    transition: all $transition_duration; 
+    @include themed('box-shadow', 'topbuttonshadow');
+    @include themed('background-color', 'topbutton');
+    @include all_transition_durations;
+
+    &:hover{
+        @include themed('background-color', 'accent');
+    }
+}
+  
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

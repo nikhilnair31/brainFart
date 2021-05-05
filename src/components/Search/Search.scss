@@ -1,0 +1,23 @@
+@import "../../color-themes";
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1pc;
+    z-index: 0;
+
+    .search_img {
+        padding-right: 0.5pc;
+        width: 2pc;
+        @include themed('background-color', 'inputfield');
+    }
+
+    .search_input {
+        padding: 0.5pc;
+        border: 0pc;
+        width: 10pc;
+        @include themed('color', 'inputtext');
+        @include themed('background-color', 'inputfield');
+    }
+}

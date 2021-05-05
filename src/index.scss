@@ -1,0 +1,38 @@
+@import "color-themes";
+
+@font-face {
+    font-family: GothamLight;
+    src: url('assets/fonts/GothamLight.otf') format("opentype");
+}
+
+$scroll_track_color: rgba(35, 35, 35, 0.01);
+$scroll_thumb_color: rgba(25, 25, 25, 0.02);
+$scroll_accent_color: rgba(15, 15, 15, 0.03);
+$scroll_width: 0rem;
+
+html {
+	// height: 100%;
+	width: 100%;
+}
+
+body {
+	margin: 0;
+	width: 100%;
+    font-family: GothamLight;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: $scroll_width;
+}
+
+body::-webkit-scrollbar-track {
+    background: $scroll_track_color;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: $scroll_thumb_color;
+    &:hover {
+		background: $scroll_accent_color;
+    }
+}

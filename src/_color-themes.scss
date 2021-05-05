@@ -1,0 +1,66 @@
+$transition_duration: 300ms;
+
+$themes: (
+    light: (
+        accent: #58ABAE,
+        bg: rgb(255, 255, 255),
+        banner: rgba(201, 201, 201, 0.25),
+		card: rgb(250, 250, 250),
+		slides: rgb(245, 245, 245),
+		contact: rgb(245, 245, 245),
+		inputfield: rgb(235, 235, 235),
+		footer: rgb(235, 235, 235),
+
+        text: rgb(10, 10, 10),
+		alttext: rgb(255, 255, 255),
+		inputtext: rgb(15, 15, 15),
+		
+		topbutton: rgb(225, 225, 225),
+		iconinvert: invert(20%),
+		iconinverthighlight: invert(40%),
+
+		iconshadow: inset 3px 6px 10px 0px #bdbdbd,
+		imgshadow: 6px 11px 20px 0px rgb(230, 230, 230),
+		slidebtnshadow: 6px 11px 20px 0px #818181,
+		cardshadow: 6px 13px 10px 0px rgb(240, 240, 240),
+		topbuttonshadow: 3px 8px 10px 0px rgb(180, 180, 180),
+    ),
+    dark: (
+        accent: #fe2b5d,
+        bg: rgb(20, 20, 20),
+        banner: rgba(41, 41, 41, 0.25),
+		card: rgb(30, 30, 30),
+		slides: rgb(30, 30, 30),
+		contact: rgb(35, 35, 35),
+		inputfield: rgb(45, 45, 45),
+		footer: #7f011e,
+
+        text: rgb(255, 255, 255),
+		alttext: rgb(20, 20, 20),
+		inputtext: rgb(201, 201, 201),
+
+		topbutton: rgb(20, 20, 20),
+		iconinvert: invert(0%),
+		iconinverthighlight: invert(20%),
+
+		iconshadow: 3px 6px 10px 0px #000000,
+		imgshadow: 6px 11px 20px 0px #0f0f0f,
+		slidebtnshadow: 6px 11px 20px 0px #080808,
+		cardshadow: 6px 13px 15px 0px #0d0d0d,
+		topbuttonshadow: 3px 8px 15px 0px #0d0d0d,
+    ),
+);
+
+@mixin themed($key, $color) {
+	@each $theme-name, $theme-color in $themes {
+		.theme-#{$theme-name} & {
+			#{$key}: map-get(map-get($themes, $theme-name), $color)
+		}
+	}
+}
+
+@mixin all_transition_durations {
+    transition-duration: $transition_duration;
+    -moz-transition-duration: $transition_duration;
+    -webkit-transition-duration: $transition_duration;
+}

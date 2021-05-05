@@ -1,0 +1,81 @@
+@import "../../../color-themes";
+
+.card {
+    position: relative;
+    text-align: center;
+    border-radius: 0.5pc;
+    @include themed('box-shadow', 'cardshadow');
+    @include themed('background', 'card');
+    @include all_transition_durations;
+
+    .tit {
+        font-weight: bold;
+        font-size: 1.5pc;
+        padding-top: 0.5pc;
+        padding-bottom: 0.5pc;
+        margin: 0px;
+        @include themed('color', 'text');
+        @include all_transition_durations;
+    }
+
+    .dat_dur {
+        font-weight: normal;
+        font-size: 0.6pc;
+        padding-top: 0.25pc;
+        padding-bottom: 1pc;
+        margin: 0px;
+        @include themed('color', 'text');
+        @include all_transition_durations;
+    }
+
+    .pos, .loc, .link {
+        font-weight: normal;
+        font-size: 0.8pc;
+        text-align: justify;
+        text-align-last: center;
+        padding: 0.5pc;
+        margin: 0;
+        font-size: 0.9pc;
+        @include themed('color', 'text');
+        @include all_transition_durations;
+    }
+
+    .link {
+        @include themed('color', 'accent');
+
+        &:hover{
+            @include themed('color', 'alttext');
+        }
+    }
+
+    .linkbtn {
+        padding: 0pc 1pc 0pc 1pc;
+        width: 1.5pc;
+        cursor: pointer;
+        @include themed('filter', 'iconinvert');
+        @include themed('-webkit-filter', 'iconinvert');
+        @include all_transition_durations;
+
+        &:hover{
+            @include themed('filter', 'iconinverthighlight');
+            @include themed('-webkit-filter', 'iconinverthighlight');
+        }
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .card{
+        margin: 1pc auto;
+        padding: 2pc;
+        width: 30pc;
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .card{
+        margin: 0.75pc 0pc;
+        padding: 1.5pc;
+    }
+}

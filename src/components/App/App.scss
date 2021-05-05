@@ -1,0 +1,5 @@
+@import "../../color-themes";
+
+#root_child {
+    @include themed('background-color', 'bg');
+}

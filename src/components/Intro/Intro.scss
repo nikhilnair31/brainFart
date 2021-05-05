@@ -1,0 +1,42 @@
+@import "../../color-themes";
+
+.intro_wrapper {
+    height: 100%;
+    padding: 1pc;
+
+    .intro {
+        position: relative;
+        text-align: justify;
+        padding-top: 2pc;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 6pc;
+            border-radius: 50%;
+            @include themed('box-shadow', 'imgshadow');
+            @include all_transition_durations;
+        }
+
+        h1, h2, h3 {
+            font-style: normal;
+            text-align: center;
+            margin: 0px;
+            @include themed('color', 'text');
+            @include all_transition_durations;
+        }
+
+        h1 {
+            font-size: 3pc;
+            padding: 0.5pc;
+        }
+        h2 {
+            font-size: 2pc;
+            padding: 0.5pc;
+        }
+        h3 {
+            font-size: 1pc;
+            padding: 0.5pc;
+        }
+    }
+}
