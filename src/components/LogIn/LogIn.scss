@@ -7,9 +7,6 @@
     .login {
         position: absolute;
         top: 50%; left: 50%;
-        transform: translate(-50%, 40%);
-        height: 25pc;
-        width: 25pc;
         border-radius: 1pc;
         @include themed('background-color', 'card');
         
@@ -36,21 +33,30 @@
 
 //Desktop
 @media only screen and (min-width: 600px) {
-    .login{
-        h1 {
-            margin-top: 3pc;
-            font-size: 3pc;
-        }
-        
-        .login-provider-button {
-            border: 0pc;
-            border-radius: 50%;
-            padding: 0pc;
-            margin: 1pc;
-            height: 1pc;
-            width: 1pc;
-            .logo_img {
-                width: 5pc;
+    .login_wrapper {
+        position: relative;
+        text-align: center;
+        .login{
+            height: 23pc;
+            width: 20pc;
+            transform: translate(-50%, 40%);
+
+            h1 {
+                margin-top: 3pc;
+                margin-bottom: 1pc;
+                font-size: 3pc;
+            }
+            
+            .login-provider-button {
+                border: 0pc;
+                border-radius: 1pc;
+                padding: 0pc;
+                margin: 0.7pc;
+                height: 3pc;
+                width: 80%;
+                .logo_img {
+                    width: 5pc;
+                }
             }
         }
     }
@@ -62,9 +68,19 @@
 
 //Mobile
 @media only screen and (max-width: 600px) {
-    .login{
-        h1 {
-            font-size: 3pc;
+    .login_wrapper {
+        position: relative;
+        text-align: center;
+        .login{
+            height: 25pc;
+            width: 15pc;
+            transform: translate(-50%, 30%);
+
+            h1 {
+                margin-top: 2.5pc;
+                margin-bottom: 0.7pc;
+                font-size: 3pc;
+            }
         }
     }
 

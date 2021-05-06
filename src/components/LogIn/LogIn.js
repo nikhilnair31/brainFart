@@ -1,16 +1,18 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import './LogIn.scss';
-import { auth, signInWithGoogle, signInWithAnon } from "../../helpers/firebase";
+import { signInWithGoogle, signInWithAnon, signInWithTwitter } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 
 const LogIn = (props) => {
     const user = useContext(UserContext)
+    const history = useHistory();
 
     useEffect(() => {
-        if (user) {
-            console.log(`loggedIn true: ${JSON.stringify(user)}\n user.photoURL: ${user.photoURL}`);
-            props.setLoggedIn(true);
-            if(user.photoURL) props.setPhotoURL(user.photoURL)
+        console.log(`LOGIN\n is user !== null? ${user !== null}\n user: ${JSON.stringify(user)}\n`);
+        if (user !== null) {
+            console.log(`LOGIN\n loggedIn true. Now send to /home.\n user: ${JSON.stringify(user)}\n`);
+            history.push('/home');
         }
     }, [user])
 
@@ -22,8 +24,10 @@ const LogIn = (props) => {
                     <button className="login-provider-button" onClick={signInWithGoogle}>
                         <img src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="google icon"/>
                     </button>
+                    <button className="login-provider-button" onClick={signInWithTwitter}>
+                        <img src="https://img.icons8.com/android/24/000000/twitter.png" alt="anon icon"/>
+                    </button>
                     <button className="login-provider-button" onClick={signInWithAnon}>
-                        {/* <img src="https://img.icons8.com/pastel-glyph/50/000000/hacker.png" alt="anon icon"/> */}
                         <img src="https://img.icons8.com/small/32/000000/anonymous-mask.png" alt="anon icon"/>
                     </button>
                 </div>

@@ -10,10 +10,13 @@ const CardContainer = (props) => {
     useEffect(() => {  
         dbref.ref("posts").once("value", snapshot => {
             snapshot.forEach(snap => {
-                data_list.push(snap.val());
+                var val_obj = snap.val();
+                val_obj.key = snap.key;
+                data_list.push(val_obj);
+                // console.log(`snapshot.key: ${snap.key}\n snapshot.val(): ${JSON.stringify(snap.val())}\n val_obj: ${JSON.stringify(val_obj)}\n`);
             });
             setData(data_list.reverse());
-            console.log(`data: ${JSON.stringify(data)}`);
+            console.log(`data: ${JSON.stringify(data)}\n`);
         });
     }, [props.posted]);
 

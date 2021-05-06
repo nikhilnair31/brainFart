@@ -1,6 +1,0 @@
-@import "../../color-themes";
-
-#root_child {
-    height: 100%;
-    @include themed('background-color', 'bg');
-}

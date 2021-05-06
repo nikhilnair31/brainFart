@@ -20,20 +20,40 @@ firebase.analytics();
 export const dbref = firebase.app().database('https://ideahub31-default-rtdb.asia-southeast1.firebasedatabase.app');
 
 export const auth = firebase.auth();
+
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const signInWithGoogle = () => {
     auth.signInWithPopup(googleProvider).then((res) => {
-        console.log(`auth: ${JSON.stringify(auth)}\n\n\n res.user: ${JSON.stringify(res.user)}\n `);
+        console.log(`FIREBASE res\n auth: ${JSON.stringify(auth)}\n `);
     }).catch((error) => {
-        console.log(`error.message: ${JSON.stringify(error.message)}\n `);
+        console.log(`FIREBASE error\n error.message: ${JSON.stringify(error.message)}\n `);
     })
-    console.log(`auth: ${JSON.stringify(auth)}\n`);
+    console.log(`FIREBASE initial\n auth: ${JSON.stringify(auth)}\n`);
 }
+
+const twitterProvider = new firebase.auth.TwitterAuthProvider();
+export const signInWithTwitter = () => {
+    auth.signInWithPopup(twitterProvider).then((res) => {
+       console.log(res.credential.accessToken, res.user);
+    }).catch((error) => {
+        console.log(`FIREBASE error\n error.message: ${JSON.stringify(error.message)}\n `);
+    })
+ }
+
 export const signInWithAnon = () => {
     auth.signInAnonymously().then((res) => {
-        console.log(`auth: ${JSON.stringify(auth)}\n\n\n res.user: ${JSON.stringify(res.user)}\n `);
+        console.log(`FIREBASE res\n auth: ${JSON.stringify(auth)}\n `);
     }).catch((error) => {
-        console.log(`error.message: ${JSON.stringify(error.message)}\n `);
+        console.log(`FIREBASE error\n error.message: ${JSON.stringify(error.message)}\n `);
     })
-    console.log(`auth: ${JSON.stringify(auth)}\n`);
+    console.log(`FIREBASE initial\n auth: ${JSON.stringify(auth)}\n `);
+}
+
+export const logOut = () => {
+    auth.signOut().then(()=> {
+        console.log(`FIREBASE res\n auth: ${JSON.stringify(auth)}\n `);
+    }).catch((error) => {
+        console.log(`FIREBASE error\n error.message: ${JSON.stringify(error.message)}\n `);
+    })
+    console.log(`FIREBASE initial\n auth: ${JSON.stringify(auth)}\n `);
 }
