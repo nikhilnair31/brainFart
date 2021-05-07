@@ -3,7 +3,7 @@ import { auth } from "../helpers/firebase"
 
 export const UserContext = createContext({user: null})
 
-export default (props) => {
+const UserProvider = (props) => {
     const [user, setuser] = useState(null)
 
     useEffect(() => {
@@ -23,3 +23,4 @@ export default (props) => {
         <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
     );
 }
+export default UserProvider;

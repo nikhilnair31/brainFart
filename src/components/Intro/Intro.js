@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
-import { logOut } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 import './Intro.scss';
 
@@ -13,7 +12,7 @@ const Intro = () => {
         console.log(`INTRO\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
         if (user === null) {
             console.log(`INTRO\n loggedOut true. Now send to /login.\n user: ${JSON.stringify(user)}\n`);
-            history.push('/login');
+            history.push('/');
         }
         else{
             if(!user.isAnonymous){
@@ -30,8 +29,7 @@ const Intro = () => {
                 <div className="intro_head">
                     <img className="logo_img" src='./images/idea_icon1.png' alt="myFace"/>
                     <h1 className="title" >ideaHub</h1>
-                    <img className="personal_img" src={photoURL} alt="myFace"/>
-                    <button onClick={logOut}>Logout</button>
+                    <img className="personal_img" src={photoURL} alt="myFace" onClick={() => history.push('/user')}/>
                 </div>
                 <h2>share ideas!</h2>
                 <p>by<a href="https://twitter.com/_silhouettte_">@silhouettte</a></p>

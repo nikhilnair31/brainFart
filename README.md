@@ -1,7 +1,8 @@
 # To-Do
 * Home page
-    - [ ] Add functional search bar
     - [ ] Style the logout button
+    - [ ] Have footer stay at botom of page even while searching
+    - [x] Add functional search bar
     - [x] Figure out prop drill flow to show profile picture for Google/Anon
     - [x] Add logout button
 * Login Component
@@ -14,7 +15,8 @@
     - [x] Add conditional render if user.isAnon is true
 * Idea card
     - [ ] Add functionality to up/down vote buttons considering 1 user can only submit 1 up/down vote for an idea to avoid spamming.
-    - [ ] Trigger re-render of all ideas after deleting some idea
+    - [ ] Figure out how to update upvote on only 1 idea and not pull full database to avoid re-render of whole list
+    - [x] Trigger re-render of all ideas after deleting some idea
     - [x] Show delete button to user only for their own ideas
     - [x] Add upvote and downvote button
     - [x] Add user and time of idea

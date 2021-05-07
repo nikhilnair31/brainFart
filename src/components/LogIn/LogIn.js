@@ -19,7 +19,7 @@ const LogIn = (props) => {
     return (
         <div className="login_wrapper">
             <div className="login">
-                <h1>Log in?</h1>
+                <h1 className="login_title">Log in?</h1>
                 <div className="login-buttons">
                     <button className="login-provider-button" onClick={signInWithGoogle}>
                         <img src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="google icon"/>

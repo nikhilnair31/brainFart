@@ -7,8 +7,16 @@
         position: relative;
 
         .intro_head{
-            display: table;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            margin: 1pc auto;
 
+            .title{
+                float: left;
+                padding: 0.5pc;
+                @include themed('color', 'text');
+                @include all_transition_durations;
+            }
             .logo_img, .personal_img {
                 float: left;
                 margin: auto;
@@ -16,13 +24,13 @@
                 border-radius: 50%;
                 @include all_transition_durations;
             }
-
-            h1{
-                float: left;
+            .personal_img {
+                cursor: pointer;
+                border: 0.25pc solid #fe2b5d;
             }
         }
 
-        h1, h2, p, a {
+        h2, p, a {
             padding: 0.5pc;
             @include themed('color', 'text');
             @include all_transition_durations;
@@ -38,6 +46,10 @@
         .intro_head{
             margin: auto;
         }
+        .title {
+            margin: auto 1pc;
+            font-size: 3pc;
+        }
         .logo_img {
             float: left;
             display: block;
@@ -49,16 +61,12 @@
             background-color: white;
         }
     }
-    .title, h2, p, a {
-        margin: auto 1pc;
-    }
-    .title {
-        font-size: 3pc;
-    }
     h2 {
+        margin: auto 1pc;
         font-size: 2pc;
     }
     p, a {
+        margin: auto 1pc;
         font-size: 1pc;
     }
 }
@@ -68,6 +76,13 @@
     .intro{
         padding-top: 1pc;
         text-align: left;
+        .intro_head{
+            grid-gap: 0pc;
+        }
+        .title {
+            margin: auto 0pc;
+            font-size: 3pc;
+        }
         .logo_img {
             float: left;
             display: none;
@@ -78,16 +93,12 @@
             width: 3pc;
         }
     }
-    .title, h2, p, a {
-        margin: auto 0pc;
-    }
-    .title {
-        font-size: 3pc;
-    }
     h2 {
+        margin: auto 0pc;
         font-size: 1pc;
     }
     p, a {
+        margin: auto 0pc;
         font-size: 0.5pc;
     }
 }

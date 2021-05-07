@@ -6,12 +6,22 @@
     justify-content: center;
     @include all_transition_durations;
 
+    .grid_container{
+        display: grid;
+        grid-template-columns: auto;
+    }
+
     .page_title {
         text-align: center;
         text-decoration: underline;
         margin: 0pc auto 3pc auto;
         font-size: 1.5pc;
         @include themed('color', 'accent');
+    }
+    .error_title {
+        text-align: center;
+        font-size: 0.8pc;
+        @include themed('color', 'text');
     }
 }
 
@@ -20,10 +30,6 @@
     .page_container{
         padding: 1pc;
     }
-    // .grid_container {
-    //     display: grid;
-    //     grid-template-columns: repeat(3, 0.5fr);
-    // }
     .page_container{
         .page_title {
             font-size: 1.5pc;
@@ -36,11 +42,6 @@
     .page_container{
         padding: 1pc;
     }
-    // .grid_container {
-    //     width: 100%;
-    //     height: auto;
-    //     margin: 0 auto;
-    // }
     .page_container{
         .page_title {
             font-size: 1pc;

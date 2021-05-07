@@ -27,6 +27,12 @@ const AddIdea = (props) =>{
     }, [user]);
 
     const handleIdeaChange = event => { setIdea(event.target.value); };
+    
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSubmit();
+        }
+    }
 
     const handleSubmit = () => {
         if(idea === ''){
@@ -42,13 +48,14 @@ const AddIdea = (props) =>{
                 pauseOnHover: true, draggable: false, progress: undefined, });
         }
     };
+
     
     if (showPosting) {
 		return( 
 			<div className="addIdea_container">
                 <div className="addIdea">
-                    <input className="idea_input" type="text" placeholder="Add an idea" onChange={handleIdeaChange}/>
-                    <button className="postIdea" alt="Submit" onClick={handleSubmit}>Post</button>
+                    <input className="idea_input" type="text" placeholder="Add an idea" onChange={handleIdeaChange} onKeyDown={handleKeyDown} />
+                    <button className="postIdea" type="submit" alt="Submit" onClick={handleSubmit}>Post</button>
                 </div>
                 <ToastContainer progressClassName="toastProgress" bodyClassName="toastBody" />
             </div>
@@ -57,15 +64,6 @@ const AddIdea = (props) =>{
     else{
         return null;
     }
-    // return( 
-    //     <div className="addIdea_container">
-    //         <div className="addIdea">
-    //             <input className="idea_input" type="text" placeholder="Add an idea" onChange={handleIdeaChange}/>
-    //             <button className="postIdea" alt="Submit" onClick={handleSubmit}>Post</button>
-    //         </div>
-    //         <ToastContainer progressClassName="toastProgress" bodyClassName="toastBody" />
-    //     </div>
-    // );
 }
 
 export default AddIdea;

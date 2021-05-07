@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import UserProvider from '../../providers/UserProvider';
 import LogIn from '../LogIn/LogIn';
 import Home from '../Home/Home';
+import User from '../User/User';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 
@@ -14,8 +15,9 @@ const App = () => {
 		<Router>
 			<Switch>
 				<UserProvider>
-					<Route path="/login" exact component={() => <LogIn />} />
-					<Route path="/home" exact component={() => <Home posted={posted} setPosted={setPosted} posted={posted}/>} />
+					<Route path="/" exact component={() => <LogIn />} />
+					<Route path="/home" exact component={() => <Home posted={posted} setPosted={setPosted}/>} />
+					<Route path="/user" exact component={() => <User />} />
 				</UserProvider>
 			</Switch>
 		</Router>

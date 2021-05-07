@@ -20,9 +20,8 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .footer_wrapper{
-        height: 7vh;
         .footer {
-            height: 7vh;
+            height: 5vh;
             h5 {
                 font-size: 0.7pc;
             }
@@ -33,7 +32,6 @@
 //Mobile
 @media only screen and (max-width: 600px) {
     .footer_wrapper{
-        height: 5vh;
         .footer {
             height: 5vh;
             h5 {

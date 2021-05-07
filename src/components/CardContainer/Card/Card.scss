@@ -1,6 +1,7 @@
 @import "../../../color-themes";
 
 .card {
+    display: inline-block;
     position: relative;
     text-align: center;
     border-radius: 0.7pc;
@@ -8,57 +9,49 @@
     @include themed('background', 'card');
     @include all_transition_durations;
 
-    .idea_text {
-        font-weight: bold;
-        font-size: 1.5pc;
-        padding-top: 0.5pc;
-        padding-bottom: 0.5pc;
-        margin: 0px;
-        @include themed('color', 'text');
-        @include all_transition_durations;
-    }
-
-    .displayName_text {
-        font-weight: normal;
-        font-size: 0.6pc;
-        padding-top: 0.25pc;
-        padding-bottom: 1pc;
-        margin: 0px;
-        @include themed('color', 'text');
-        @include all_transition_durations;
-    }
-
-    .upvotes_text {
-        font-weight: normal;
-        font-size: 0.8pc;
-        text-align: justify;
-        text-align-last: center;
-        padding: 0.5pc;
-        margin: 0;
-        font-size: 0.9pc;
-        @include themed('color', 'text');
-        @include all_transition_durations;
-    }
-
-    .link {
-        @include themed('color', 'accent');
-
-        &:hover{
-            @include themed('color', 'alttext');
+    .text_section {
+        float: left;
+        width: 83%;
+        .time_text, .idea_text, .displayName_text, .votes_text {
+            //font-weight: bold;
+            text-align: left;
+            margin: 0pc;
+            padding-top: 0.5pc;
+            padding-bottom: 0.5pc;
+            @include themed('color', 'text');
+            @include all_transition_durations;
+        }
+        .time_text, .displayName_text {
+            //font-weight: bold;
+            font-size: 0.5pc;
+        }
+        .votes_text {
+            @include themed('color', 'accent');
         }
     }
 
-    .linkbtn {
-        padding: 0pc 0.4pc 0pc 0.4pc;
-        width: 1.5pc;
-        cursor: pointer;
-        @include themed('filter', 'iconinvert');
-        @include themed('-webkit-filter', 'iconinvert');
-        @include all_transition_durations;
+    .button_section {
+        display: grid;
+        float: left;
+        width: 10%;
+        height: 100%;
+        button {
+            width: 100%;
+            border: 0pc;
+            border-radius: 0.5pc;
+            cursor: pointer;
+            @include themed('background-color', 'inputfield');
+            @include all_transition_durations;
+            &:hover{
+                @include themed('background-color', 'accentplus');
+            }
 
-        &:hover{
-            @include themed('filter', 'iconinverthighlight');
-            @include themed('-webkit-filter', 'iconinverthighlight');
+            &.delete_button {
+                @include themed('background-color', 'accent');
+                &:hover{
+                    @include themed('background-color', 'accentplus');
+                }
+            }
         }
     }
 }
@@ -67,15 +60,23 @@
 @media only screen and (min-width: 600px) {
     .card{
         margin: 1pc auto;
-        padding: 1pc;
+        padding: 1.5pc;
         width: 30pc;
+        .text_section {
+            padding-left: 0.5pc;
+            padding-right: 1pc;
+        }
     }
 }
 
 //Mobile
 @media only screen and (max-width: 600px) {
     .card{
-        margin: 0.75pc 0pc;
-        padding: 1.5pc;
+        margin: 0.5pc 0pc;
+        padding: 1pc;
+        .text_section {
+            padding-left: 0pc;
+            padding-right: 0pc;
+        }
     }
 }
