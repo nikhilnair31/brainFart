@@ -13,7 +13,7 @@ const AddIdea = (props) =>{
     const [showPosting, setShowPosting] = useState(false);
 
     useEffect(() => {
-        console.log(`ADDIDEA\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
+        // console.log(`ADDIDEA\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
         if (user !== null) {
             if(user.isAnonymous) setShowPosting(false);
             else setShowPosting(true);
@@ -40,10 +40,10 @@ const AddIdea = (props) =>{
                 pauseOnHover: true, draggable: false, progress: undefined, })
         }
         else if(idea !== ''){
-            dbref.ref('posts').push({ uid: uid, displayName: displayName, idea: idea, upvotes: 0, utc:Date.now() });
+            dbref.collection('posts').add({ uid: uid, displayName: displayName, idea: idea, upvotes: 0, utc:Date.now() });
             setIdea('');
             document.getElementsByClassName('idea_input')[0].value = ''
-            props.setPosted(props.posted + 1);
+            // props.setPosted(props.posted + 1);
             toast("Idea posted!", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
                 pauseOnHover: true, draggable: false, progress: undefined, });
         }

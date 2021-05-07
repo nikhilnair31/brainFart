@@ -11,7 +11,7 @@
 
     .text_section {
         float: left;
-        width: 83%;
+        width: 82%;
         .time_text, .idea_text, .displayName_text, .votes_text {
             //font-weight: bold;
             text-align: left;
@@ -33,7 +33,7 @@
     .button_section {
         display: grid;
         float: left;
-        width: 10%;
+        width: 13%;
         height: 100%;
         button {
             width: 100%;
@@ -66,6 +66,9 @@
             padding-left: 0.5pc;
             padding-right: 1pc;
         }
+        .button_section {
+            grid-gap: 0.5pc;
+        }
     }
 }
 
@@ -77,6 +80,9 @@
         .text_section {
             padding-left: 0pc;
             padding-right: 0pc;
+        }
+        .button_section {
+            grid-gap: 0.25pc;
         }
     }
 }

@@ -4,3 +4,52 @@
     height: 100%;
     @include themed('background-color', 'bg');
 }
+
+.page_container{
+    padding: 0.5pc 1pc;
+    position: relative;
+    justify-content: center;
+    @include all_transition_durations;
+
+    .grid_container{
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .page_title {
+        text-align: center;
+        text-decoration: underline;
+        margin: 0pc auto 3pc auto;
+        font-size: 1.5pc;
+        @include themed('color', 'accent');
+    }
+    .error_title {
+        text-align: center;
+        font-size: 0.8pc;
+        @include themed('color', 'text');
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .page_container{
+        padding: 1pc;
+    }
+    .page_container{
+        .page_title {
+            font-size: 1.5pc;
+        }
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .page_container{
+        padding: 1pc;
+    }
+    .page_container{
+        .page_title {
+            font-size: 1pc;
+        }
+    }
+}

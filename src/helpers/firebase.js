@@ -1,7 +1,7 @@
 //import firebase from 'firebase/app';
 import firebase from 'firebase/app';
 import 'firebase/database'
-import 'firebase/storage'
+import 'firebase/firestore'
 import 'firebase/analytics'
 import 'firebase/auth'
 
@@ -17,7 +17,8 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-export const dbref = firebase.app().database('https://ideahub31-default-rtdb.asia-southeast1.firebasedatabase.app');
+// export const dbref = firebase.app().database('https://ideahub31-default-rtdb.asia-southeast1.firebasedatabase.app');
+export const dbref = firebase.firestore();
 
 export const auth = firebase.auth();
 

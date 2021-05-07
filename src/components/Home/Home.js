@@ -2,39 +2,43 @@ import React, {useEffect, useState} from 'react';
 import Intro from '../Intro/Intro';
 import Search from '../Search/Search';
 import AddIdea from '../AddIdea/AddIdea';
-import CardContainer from '../CardContainer/CardContainer';
+// import CardContainer from '../CardContainer/CardContainer';
+import Card from '../CardContainer/Card/Card.js';
 import Footer from '../Footer/Footer';
 import { dbref } from '../../helpers/firebase.js';
 import './Home.scss';
 
 const Home = (props) => {
-    var data_list = []
     const [searchedIdea, setSearchedIdea] = useState('');
-    const [data, setData] = useState([]);
+    const [posts, setPosts] = useState([]);
+
+    const filteredPosts = posts.filter(idea => {
+        return idea.post.idea.toLowerCase().includes(searchedIdea.toLowerCase()) || 
+            idea.post.displayName.toLowerCase().includes(searchedIdea.toLowerCase());
+    });
 
     useEffect(() => {  
-        dbref.ref("posts").once("value", snapshot => {
-            snapshot.forEach(snap => {
-                var val_obj = snap.val();
-                val_obj.key = snap.key;
-                data_list.push(val_obj);
-                // console.log(`snapshot.key: ${snap.key}\n snapshot.val(): ${JSON.stringify(snap.val())}\n val_obj: ${JSON.stringify(val_obj)}\n`);
-            });
-            setData(data_list.reverse());
-            console.log(`HOME\n data: ${JSON.stringify(data)}\n`);
+        dbref.collection("posts").onSnapshot(snapshot => {
+            setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
         });
-    }, [props.posted]);
-
-    const filteredIdeas = data.filter(idea => {
-        return idea.idea.includes(searchedIdea) || idea.displayName.includes(searchedIdea);
-    });
+    }, []);
 
     return (
         <div id="root_child">
             <Intro />
             <Search searchedIdea={searchedIdea} setSearchedIdea={setSearchedIdea} />
             <AddIdea posted={props.posted} setPosted={props.setPosted}/>
-            <CardContainer posted={props.posted} setPosted={props.setPosted} data={filteredIdeas} />
+            {/* <CardContainer posted={props.posted} setPosted={props.setPosted} data={filteredIdeas} /> */}
+            <div className="page_container" id="Dashboard">
+                <h3 className="page_title">Dashboard</h3>
+                <div className="grid_container">
+                    {   
+                        filteredPosts.map(({id, post}) => (
+                            <Card key={id} postid={id} utc={post.utc} idea={post.idea} postersuid={post.uid} displayName={post.displayName} upvotes={post.upvotes} />
+                        ))
+                    }
+                </div>
+            </div>
             <Footer/>
         </div>
     );

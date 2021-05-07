@@ -4,14 +4,13 @@ import './LogIn.scss';
 import { signInWithGoogle, signInWithAnon, signInWithTwitter } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 
-const LogIn = (props) => {
+const LogIn = () => {
     const user = useContext(UserContext)
     const history = useHistory();
 
     useEffect(() => {
-        console.log(`LOGIN\n is user !== null? ${user !== null}\n user: ${JSON.stringify(user)}\n`);
         if (user !== null) {
-            console.log(`LOGIN\n loggedIn true. Now send to /home.\n user: ${JSON.stringify(user)}\n`);
+            // console.log(`LOGIN\n loggedIn true. Now send to /home.\n user: ${JSON.stringify(user)}\n`);
             history.push('/home');
         }
     }, [user])
