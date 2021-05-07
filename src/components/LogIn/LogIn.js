@@ -21,6 +21,8 @@ const LogIn = () => {
                 <img className="logo_img" src='./images/idea_icon1.png' alt="logo"/>
                 <div className="login_text">
                     <h1>Welcome</h1>
+                    <p> Login to view & post ideas</p>
+                    <p> Go anonymous to only view ideas </p>
                     <p> By logging in you accept our </p>
                     <a href="#">Privacy Policy</a>
                 </div>

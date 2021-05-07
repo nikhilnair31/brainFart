@@ -16,6 +16,7 @@
     - [ ] Find a way to get high res user icon
         - [ ] Allow for changing user ids?
 * AddIdea
+    - [ ] Have inputtext element height increase for long texts
     - [x] Check why user context here shows null even though it prints in other scripts
     - [x] Add conditional render if user.isAnon is true
 * Idea card

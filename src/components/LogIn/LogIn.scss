@@ -14,7 +14,7 @@
         .login_text {
             h1, p, a {
                 text-align: center;
-                padding: 0.7pc;
+                padding: 0.25pc;
                 @include themed('color', 'text');
                 @include all_transition_durations;
             }

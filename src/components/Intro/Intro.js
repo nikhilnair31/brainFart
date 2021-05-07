@@ -17,6 +17,8 @@ const Intro = () => {
         else{
             if(!user.isAnonymous){
                 setPhotoURL(user.photoURL);
+            }
+            else{
                 document.getElementsByClassName("personal_img")[0].style.filter = "invert(100%)";
             }
         }
