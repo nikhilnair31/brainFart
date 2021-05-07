@@ -23,6 +23,7 @@ const User = () => {
                 setDisplayName(user.displayName);
                 setDisplayEmail(user.email);
                 setPhotoURL(user.photoURL);
+                document.getElementsByClassName("user_img")[0].style.filter = "invert(100%)";
             }
         }
     }, [user]);

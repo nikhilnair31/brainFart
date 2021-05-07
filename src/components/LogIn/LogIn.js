@@ -18,23 +18,27 @@ const LogIn = () => {
     return (
         <div className="login_wrapper">
             <div className="login">
-                <h1 className="login_title">Log in?</h1>
-                <div className="login-buttons">
-                    <button className="login-provider-button" onClick={signInWithGoogle}>
-                        <img src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="google icon"/>
+                <img className="logo_img" src='./images/idea_icon1.png' alt="logo"/>
+                <div className="login_text">
+                    <h1>Welcome</h1>
+                    <p> By logging in you accept our </p>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div className="login_button_container">
+                    <button className="login_button" onClick={signInWithGoogle}>
+                        <h5 className="button_text" >Login with Google</h5>
+                        <img className="login_img" src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="google icon"/>
                     </button>
-                    <button className="login-provider-button" onClick={signInWithTwitter}>
-                        <img src="https://img.icons8.com/android/24/000000/twitter.png" alt="anon icon"/>
+                    <button className="login_button" onClick={signInWithTwitter}>
+                        <h5 className="button_text" >Login with Twitter</h5>
+                        <img className="login_img" src="https://img.icons8.com/android/24/000000/twitter.png" alt="anon icon"/>
                     </button>
-                    <button className="login-provider-button" onClick={signInWithAnon}>
-                        <img src="https://img.icons8.com/small/32/000000/anonymous-mask.png" alt="anon icon"/>
+                    <button className="login_button" onClick={signInWithAnon}>
+                        <h5 className="button_text" >Login Anonymous</h5>
+                        <img className="login_img" src="https://img.icons8.com/small/32/000000/anonymous-mask.png" alt="anon icon"/>
                     </button>
                 </div>
             </div>
-            {/* <div className="base">
-                <img className="logo_img" src='./images/idea_icon1.png' alt="logo"/>
-                <h5>Copyrights © Nikhil Nair 2021. All Rights Reserved.</h5>
-            </div> */}
         </div>
     );
 }

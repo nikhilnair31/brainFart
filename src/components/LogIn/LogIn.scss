@@ -11,97 +11,126 @@
         @include themed('background-color', 'card');
         @include all_transition_durations;
         
-        .login_title {
-            padding: 0.5pc;
-            @include themed('color', 'text');
+        .login_text {
+            h1, p, a {
+                text-align: center;
+                padding: 0.7pc;
+                @include themed('color', 'text');
+                @include all_transition_durations;
+            }
         }
 
-        .login-buttons {
+        .login_button_container {
             padding: 1pc;
-            .login-provider-button {
+            .login_button {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
                 border: 0pc;
-                padding: 0pc;
-                height: 3pc;
-                width: 80%;
                 cursor: pointer;
-                @include themed('background-color', 'accent');
+                @include themed('background-color', 'inputfield');
                 @include all_transition_durations;
                 &:hover{
-                    @include themed('background-color', 'accentplus');
+                    @include themed('background-color', 'accent');
+                }
+                .button_text {
+                    font-weight: lighter;
+                    font-size: 1pc;
+                    @include themed('color', 'text');
+                }
+                .login_img {
+                    float: center;
+                    margin-left: 1pc;
+                    filter: invert(100%);
                 }
             }
         }
-    }
-
-    .base{
-        position: relative;
-
     }
 }
 
 //Desktop
 @media only screen and (min-width: 600px) {
     .login_wrapper {
-        position: relative;
-        text-align: center;
         .login{
-            width: 20%;
-            transform: translate(-50%, 50%);
-
-            h1 {
+            width: 20pc;
+            transform: translate(-50%, 25%);
+            
+            .logo_img {
+                text-align: center;
                 margin-top: 2pc;
-                margin-bottom: 0pc;
-                font-size: 3pc;
+                width: 5pc;
+            }
+
+            .login_text {
+                h1 {
+                    margin-top: 1pc;
+                    margin-bottom: 0pc;
+                    font-size: 2pc;
+                    @include themed('color', 'accent');
+                }
+                p {
+                    font-size: 0.7pc;
+                    margin: auto 1pc;
+                }
+                a {
+                    font-size: 0.7pc;
+                }
             }
             
-            .login-provider-button {
+            .login_button {
                 border: 0pc;
                 border-radius: 1pc;
                 padding: 0pc;
-                margin: 0.7pc;
+                margin: 0.7pc auto;
                 height: 3pc;
-                width: 80%;
+                width: 90%;
                 .logo_img {
                     width: 5pc;
                 }
             }
         }
     }
-
-    .login-buttons{
-        position: relative;
-    }
 }
 
 //Mobile
 @media only screen and (max-width: 600px) {
     .login_wrapper {
-        position: relative;
-        text-align: center;
         .login{
-            width: 80%;
-            transform: translate(-50%, 45%);
+            width: 80vw;
+            max-width: 20pc;
+            transform: translate(-50%, 20%);
 
-            h1 {
-                margin-top: 1.5pc;
-                margin-bottom: 1.0pc;
-                font-size: 3pc;
-            }
-        }
-    }
-
-    .login-buttons{
-        position: relative;
-
-        .login-provider-button {
-            border: 0pc;
-            border-radius: 0.5pc;
-            padding: 0pc;
-            margin: 0.5pc auto;
-            height: 1pc;
-            width: 1pc;
             .logo_img {
+                text-align: center;
+                margin-top: 2pc;
                 width: 5pc;
+            }
+
+            .login_text {
+                h1 {
+                    margin-top: 1pc;
+                    margin-bottom: 0pc;
+                    font-size: 2pc;
+                    @include themed('color', 'accent');
+                }
+                p {
+                    font-size: 0.7pc;
+                    margin: auto 1pc;
+                }
+                a {
+                    font-size: 0.7pc;
+                }
+            }
+
+            .login_button {
+                border-radius: 0.7pc;
+                padding: 0pc;
+                margin: 0.5pc auto;
+                height: 3pc;
+                width: 100%;
+                .logo_img {
+                    width: 3pc;
+                }
             }
         }
     }
