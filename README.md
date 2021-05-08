@@ -1,4 +1,6 @@
 # To-Do
+* General
+    - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
     - [ ] Have footer stay at botom of page even while searching
         - [x] Add site logo
