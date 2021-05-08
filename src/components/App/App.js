@@ -16,7 +16,7 @@ const App = () => {
 			<Switch>
 				<UserProvider>
 					<Route path="/" exact component={() => <LogIn />} />
-					<Route path="/home" exact component={() => <Home posted={posted} setPosted={setPosted}/>} />
+					<Route path="/home" exact component={() => <Home postedObj={{posted, setPosted}}/>} />
 					<Route path="/user" exact component={() => <User />} />
 				</UserProvider>
 			</Switch>

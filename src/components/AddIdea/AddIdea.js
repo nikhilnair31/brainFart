@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './AddIdea.scss';
 
-const AddIdea = (props) =>{
+const AddIdea = () =>{
     const user = useContext(UserContext);
     const [idea, setIdea] = useState('');
     const [uid, setUID] = useState('');
@@ -42,8 +42,7 @@ const AddIdea = (props) =>{
         else if(idea !== ''){
             dbref.collection('posts').add({ uid: uid, displayName: displayName, idea: idea, upvotes: 0, utc:Date.now() });
             setIdea('');
-            document.getElementsByClassName('idea_input')[0].value = ''
-            // props.setPosted(props.posted + 1);
+            document.getElementsByClassName('idea_input')[0].value = '';
             toast("Idea posted!", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
                 pauseOnHover: true, draggable: false, progress: undefined, });
         }

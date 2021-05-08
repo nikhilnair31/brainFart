@@ -27,14 +27,14 @@ const Home = (props) => {
         <div id="root_child">
             <Intro />
             <Search searchedIdea={searchedIdea} setSearchedIdea={setSearchedIdea} />
-            <AddIdea posted={props.posted} setPosted={props.setPosted}/>
+            <AddIdea posted={props.postedObj.posted} setPosted={props.postedObj.setPosted}/>
             {/* <CardContainer posted={props.posted} setPosted={props.setPosted} data={filteredIdeas} /> */}
             <div className="page_container" id="Dashboard">
                 <h3 className="page_title">Dashboard</h3>
                 <div className="grid_container">
                     {   
                         filteredPosts.map(({id, post}) => (
-                            <Card key={id} postid={id} utc={post.utc} idea={post.idea} postersuid={post.uid} displayName={post.displayName} upvotes={post.upvotes} />
+                            <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
                         ))
                     }
                 </div>

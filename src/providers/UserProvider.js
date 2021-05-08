@@ -4,23 +4,23 @@ import { auth } from "../helpers/firebase"
 export const UserContext = createContext({user: null})
 
 const UserProvider = (props) => {
-    const [user, setuser] = useState(null)
+    const [userState, setUser] = useState(null)
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
 			// console.log(`USERPROVIDER\n user: ${JSON.stringify(user)}\n`);
             if(user !== null){
                 const { uid, displayName, email, photoURL, isAnonymous }  = user;
-                setuser({ uid, displayName, email, photoURL, isAnonymous })
+                setUser({ uid, displayName, email, photoURL, isAnonymous })
             }
             else if(user === null){
-                setuser(null);
+                setUser(null);
             }
         })
     }, []);
 
     return (
-        <UserContext.Provider value={user}>{props.children}</UserContext.Provider>
+        <UserContext.Provider value={userState}>{props.children}</UserContext.Provider>
     );
 }
 export default UserProvider;

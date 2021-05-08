@@ -42,6 +42,9 @@
             cursor: pointer;
             @include themed('background-color', 'inputfield');
             @include all_transition_durations;
+            &:active {
+                @include themed('background-color', 'accent');
+            }
             &:hover{
                 @include themed('background-color', 'accentplus');
             }

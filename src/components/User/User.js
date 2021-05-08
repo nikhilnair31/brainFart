@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
-import { logOut } from "../../helpers/firebase";
+import { auth } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 import './User.scss';
 
@@ -27,6 +27,15 @@ const User = () => {
             }
         }
     }, [user]);
+
+    const logOut = () => {
+        auth.signOut().then(()=> {
+            console.log(`USER res\n auth: ${JSON.stringify(auth)}\n `);
+        }).catch((error) => {
+            console.log(`USER error\n error.message: ${JSON.stringify(error.message)}\n `);
+        })
+        console.log(`USER initial\n auth: ${JSON.stringify(auth)}\n `);
+    }
 
     return (
         <div className="user_wrapper">

@@ -1,7 +1,7 @@
 import React, {useContext, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import './LogIn.scss';
-import { signInWithGoogle, signInWithAnon, signInWithTwitter } from "../../helpers/firebase";
+import { auth, googleProvider, twitterProvider } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 
 const LogIn = () => {
@@ -10,10 +10,36 @@ const LogIn = () => {
 
     useEffect(() => {
         if (user !== null) {
-            // console.log(`LOGIN\n loggedIn true. Now send to /home.\n user: ${JSON.stringify(user)}\n`);
+            console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
             history.push('/home');
         }
     }, [user])
+
+    const signInWithGoogle = () => {
+        auth.signInWithPopup(googleProvider).then((res) => {
+            console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
+        }).catch((error) => {
+            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+        })
+        console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n`);
+    }
+
+    const signInWithTwitter = () => {
+        auth.signInWithPopup(twitterProvider).then((res) => {
+            console.log(`LOGIN\n res.credential.accessToken: ${res.credential.accessToken}\n res.user: ${JSON.stringify(res.user)}`);
+        }).catch((error) => {
+            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+        })
+    }
+
+    const signInWithAnon = () => {
+        auth.signInAnonymously().then((res) => {
+            console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
+        }).catch((error) => {
+            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+        })
+        console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n `);
+    }
 
     return (
         <div className="login_wrapper">
