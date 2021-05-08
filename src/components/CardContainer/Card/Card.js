@@ -69,6 +69,7 @@ const Card = (props) => {
                 <button className="downvote_button" onClick={() => voteThisIdea(-1)}>
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/long-arrow-down.png"  alt="downvote icon"/>
                 </button>
+                {/* <input type="button" src={'./images/up192.png'}  className="upvote_button" onClick={() => voteThisIdea(-1)} /> */}
             </div>
         </div>
     );
