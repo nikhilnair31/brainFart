@@ -19,23 +19,21 @@ const Intro = () => {
                 setPhotoURL(user.photoURL);
             }
             else{
-                document.getElementsByClassName("personal_img")[0].style.filter = "invert(100%)";
+                document.getElementsByClassName("personal_img")[0].style.filter = "invert(0%)";
             }
         }
     }, [user]);
-
-    // console.log(`INTRO\n props.imgURL: ${photoURL}`);
 
     return (
         <div className="intro_wrapper">
             <div className="intro">
                 <div className="intro_head">
-                    <img className="logo_img" src='./images/idea_icon1.png' alt="myFace"/>
-                    <h1 className="title" >ideaHub</h1>
+                    <img className="logo_img" src='./images/brainfart.png' alt="myFace"/>
+                    <h1 className="title" >brainFart</h1>
                     <img className="personal_img" src={photoURL} alt="myFace" onClick={() => history.push('/user')}/>
                 </div>
                 <h2>share ideas!</h2>
-                <p>by<a href="https://twitter.com/_silhouettte_">@silhouettte</a></p>
+                <p>by<a href="https://nikhil-nair.web.app/">Nikhil Nair</a></p>
             </div>
         </div>
     );

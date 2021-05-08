@@ -44,7 +44,7 @@ const LogIn = () => {
     return (
         <div className="login_wrapper">
             <div className="login">
-                <img className="logo_img" src='./images/idea_icon1.png' alt="logo"/>
+                <img className="logo_img" src='./images/brainfart.png' alt="logo"/>
                 <div className="login_text">
                     <h1>Welcome</h1>
                     <p> Login to view & post ideas</p>
