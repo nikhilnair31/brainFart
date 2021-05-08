@@ -1,6 +1,7 @@
 {
-  "short_name": "brainFart",
   "name": "brainFart",
+  "short_name": "brainFart",
+  "description": "Share ideas!",
   "icons": [
     {
       "src": "favicon.ico",
