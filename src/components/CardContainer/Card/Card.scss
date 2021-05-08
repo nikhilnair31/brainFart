@@ -11,8 +11,8 @@
 
     .text_section {
         float: left;
-        width: 82%;
-        .time_text, .idea_text, .displayName_text, .votes_text {
+        width: 86%;
+        .time_text, .idea_text, .displayName_text  {
             //font-weight: bold;
             text-align: left;
             margin: 0pc;
@@ -25,15 +25,26 @@
             //font-weight: bold;
             font-size: 0.5pc;
         }
-        .votes_text {
+        .delete_button {
+            float: left;
+            border: 0pc;
+            border-radius: 0.3pc;
+            margin-top: 0.5pc;
+            margin-bottom: 0.5pc;
+            width: 5pc;
+            height: 2pc;
             @include themed('color', 'accent');
+            @include themed('background-color', 'inputfield');
+            &:hover{
+                @include themed('background-color', 'accentplus');
+            }
         }
     }
 
     .button_section {
         display: grid;
         float: left;
-        width: 13%;
+        width: 9%;
         height: 100%;
         button {
             width: 100%;
@@ -48,13 +59,14 @@
             &:hover{
                 @include themed('background-color', 'accentplus');
             }
-
-            &.delete_button {
-                @include themed('background-color', 'accent');
-                &:hover{
-                    @include themed('background-color', 'accentplus');
-                }
-            }
+        }
+        .votes_text {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1pc;
+            margin: auto;
+            @include all_transition_durations;
+            @include themed('color', 'accent');
         }
     }
 }

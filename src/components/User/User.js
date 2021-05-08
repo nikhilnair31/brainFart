@@ -7,22 +7,19 @@ import './User.scss';
 const User = () => {
     const history = useHistory();
     const user = useContext(UserContext);
-	const [displayName, setDisplayName] = useState("anon");
-	const [displayEmail, setDisplayEmail] = useState("");
 	const [photoURL, setPhotoURL] = useState("https://img.icons8.com/ios/30/000000/user-male-circle.png");
 
     useEffect(() => {
-        console.log(`USER\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
         if (user === null) {
-            console.log(`USER\n loggedOut true. Now send to /login.\n user: ${JSON.stringify(user)}\n`);
+            console.log(`USER\n loggedOut true. Now send to /login.\n `);
             history.push('/');
         }
         else {
-            console.log(`INTRO\n loggedOut true. Now send to /login.\n user: ${JSON.stringify(user)}\n`);
+            console.log(`INTRO\n loggedOut true. Now send to /login.\n `);
             if(!user.isAnonymous){
-                setDisplayName(user.displayName);
-                setDisplayEmail(user.email);
                 setPhotoURL(user.photoURL);
+            }
+            else{
                 document.getElementsByClassName("user_img")[0].style.filter = "invert(100%)";
             }
         }
@@ -40,12 +37,12 @@ const User = () => {
     return (
         <div className="user_wrapper">
             <div className="user">
-                <div className="user_head">
-                    <img className="user_img" src={photoURL} alt="myFace"/>
-                    <h2 className="user_name" >{displayName}</h2>
-                    {displayEmail !== null && <h3 className="user_email" >{displayEmail}</h3>}
-                    <button className="user_logout_button" onClick={logOut}>Logout</button>
-                </div>
+                {user !== null && <div className="user_head">
+                    {user.photoURL !== null && <img className="user_img" src={photoURL} alt="myFace"/>}
+                    {user.displayName !== null && <h2 className="user_name" >{user.displayName}</h2>}
+                    {user.email !== null && <h3 className="user_email" >{user.email}</h3>}
+                </div>}
+                <button className="user_logout_button" onClick={logOut}>Logout</button>
             </div>
         </div>
     );

@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Intro from '../Intro/Intro';
 import Search from '../Search/Search';
 import AddIdea from '../AddIdea/AddIdea';
-// import CardContainer from '../CardContainer/CardContainer';
+import CardContainer from '../CardContainer/CardContainer';
 import Card from '../CardContainer/Card/Card.js';
 import Footer from '../Footer/Footer';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import { dbref } from '../../helpers/firebase.js';
 import './Home.scss';
 
@@ -28,18 +29,15 @@ const Home = (props) => {
             <Intro />
             <Search searchedIdea={searchedIdea} setSearchedIdea={setSearchedIdea} />
             <AddIdea posted={props.postedObj.posted} setPosted={props.postedObj.setPosted}/>
-            {/* <CardContainer posted={props.posted} setPosted={props.setPosted} data={filteredIdeas} /> */}
-            <div className="page_container" id="Dashboard">
-                <h3 className="page_title">Dashboard</h3>
-                <div className="grid_container">
-                    {   
-                        filteredPosts.map(({id, post}) => (
-                            <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
-                        ))
-                    }
-                </div>
-            </div>
+            <CardContainer>
+                {   
+                    filteredPosts.map(({id, post}) => (
+                        <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
+                    ))
+                }
+            </CardContainer>
             <Footer/>
+            <ScrollToTop />
         </div>
     );
 }

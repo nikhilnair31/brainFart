@@ -35,7 +35,7 @@ const Card = (props) => {
 
     const deleteMyIdea = () => {
         console.log(`deleted post`);
-        dbref.collection('posts').doc(props.postid).delete();
+        dbref.collection('posts').doc(props.post_id).delete();
     }
 
     const utcToTime = (utc) => {
@@ -52,20 +52,20 @@ const Card = (props) => {
     return (
         <div className="card">
             <div className="text_section">
-                <p className="time_text" >{props.post_id}</p>
-                <p className="time_text" >{props.op_uid}</p>
+                {/* <p className="time_text" >{props.post_id}</p>
+                <p className="time_text" >{props.op_uid}</p> */}
                 <p className="time_text" >{utcToTime(props.post_utc)}</p>
                 <h2 className="idea_text" >{props.post_idea_text}</h2>
                 <p className="displayName_text" >{props.op_displayName}</p>
-                <p className="votes_text" >{props.post_upvotes}</p>
+                {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>Delete
+                    {/* <img src="https://img.icons8.com/material/26/000000/delete-sign--v1.png"  alt="delete icon"/> */}
+                </button>}
             </div>
             <div className="button_section">
                 <button className="upvote_button" onClick={() => voteThisIdea(1)}>
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/long-arrow-up.png"  alt="upvote icon"/>
                 </button>
-                {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>
-                    <img src="https://img.icons8.com/material/26/000000/delete-sign--v1.png"  alt="delete icon"/>
-                </button>}
+                <p className="votes_text" >{props.post_upvotes}</p>
                 <button className="downvote_button" onClick={() => voteThisIdea(-1)}>
                     <img src="https://img.icons8.com/ios-glyphs/30/000000/long-arrow-down.png"  alt="downvote icon"/>
                 </button>

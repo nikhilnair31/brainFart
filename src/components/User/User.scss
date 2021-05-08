@@ -29,14 +29,16 @@
                 padding: 0.5pc;
                 @include themed('color', 'text');
             }
+        }
 
-            .user_logout_button {
-                margin: 1pc auto;
-                border: 0pc;
-                cursor: pointer;
-                @include themed('color', 'text');
-                @include themed('background-color', 'accent');
-            }
+        .user_logout_button {
+            display: grid;
+            margin: 1pc auto;
+            border: 0pc;
+            cursor: pointer;
+            @include themed('color', 'text');
+            @include themed('background-color', 'accent');
+            @include all_transition_durations;
         }
     }
 }
@@ -55,10 +57,11 @@
             .user_email {
                 font-size: 0.7pc;
             }
-            .user_logout_button {
-                width: 15%;
-                height: 2pc;
-            }
+        }
+        .user_logout_button {
+            padding: 0.5pc;
+            width: 7%;
+            height: 2pc;
         }
     }
 }
@@ -77,10 +80,11 @@
             .user_email {
                 font-size: 0.7pc;
             }
-            .user_logout_button {
-                width: 35%;
-                height: 2pc;
-            }
+        }
+        .user_logout_button {
+            padding: 0.5pc;
+            width: 35%;
+            height: 2pc;
         }
     }
 }
