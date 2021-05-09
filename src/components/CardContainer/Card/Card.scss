@@ -40,16 +40,21 @@
             }
         }
         .idea_text, .displayName_text  {
-            text-align: left;
             margin: 0pc;
             padding-top: 0.5pc;
             padding-bottom: 0.5pc;
-            @include themed('color', 'text');
             @include all_transition_durations;
         }
         .displayName_text {
+            text-align: left;
+            font-weight: bold;
             font-size: 0.75pc;
             @include themed('color', 'accent');
+        }
+        .idea_text {
+            text-align: justify;
+            font-weight: lighter;
+            @include themed('color', 'text');
         }
     }
 
@@ -58,30 +63,18 @@
         grid-template-columns: auto auto auto;
         justify-content: center;
         margin-top: 1pc;
-        input {
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            padding: 6px 6px;
+        border-radius: 0.7pc;
+        @include themed('background-color', 'accent');
+        button {
             border: 0pc;
             border-radius: 0.5pc;
             cursor: pointer;
             filter: invert(0%);
             @include themed('background-color', 'inputfield');
             @include all_transition_durations;
-            &:hover{
-                @include themed('background-color', 'accent');
+            img {
+                max-width: 15%;
             }
-        }
-        button {
-            width: 100%;
-            border: 0pc;
-            border-radius: 0.3pc;
-            cursor: pointer;
-            filter: invert(0%);
-            @include themed('background-color', 'inputfield');
-            @include all_transition_durations;
             &:active {
                 @include themed('background-color', 'accent');
             }
@@ -92,10 +85,10 @@
         .votes_text {
             text-align: center;
             font-weight: bold;
-            font-size: 0.75pc;
+            font-size: 1pc;
             margin: auto;
             @include all_transition_durations;
-            @include themed('color', 'accent');
+            @include themed('color', 'alttext');
         }
     }
 }
@@ -115,7 +108,8 @@
             }
         }
         .button_section {
-            grid-gap: 1.5pc;
+            grid-gap: 3pc;
+            height: 5vh;
         }
     }
 }
@@ -136,6 +130,7 @@
         }
         .button_section {
             grid-gap: 1.25pc;
+            height: 5vh;
         }
     }
 }
