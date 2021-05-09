@@ -1,14 +1,12 @@
 @import "../../color-themes";
 
 .page_container{
-    padding: 0.5pc 1pc;
-    position: relative;
-    justify-content: center;
-    @include all_transition_durations;
+    padding: 1pc;
 
     .grid_container{
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: auto;    
+        grid-gap: 1pc;
     }
 
     .page_title {
@@ -28,9 +26,6 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .page_container{
-        padding: 1pc;
-    }
-    .page_container{
         .page_title {
             font-size: 1.5pc;
         }
@@ -39,9 +34,6 @@
 
 //Mobile
 @media only screen and (max-width: 600px) {
-    .page_container{
-        padding: 1pc;
-    }
     .page_container{
         .page_title {
             font-size: 1pc;

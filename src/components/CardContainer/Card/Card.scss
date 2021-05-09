@@ -103,7 +103,7 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .card{
-        margin: 1pc auto;
+        margin: 0pc auto;
         padding: 1.5pc;
         width: 30pc;
         .text_section {
@@ -123,9 +123,7 @@
 //Mobile
 @media only screen and (max-width: 600px) {
     .card{
-        margin: 0.5pc 0pc;
         padding: 1pc;
-        width: 16pc;
         .text_section {
             padding-left: 0pc;
             padding-right: 0pc;
