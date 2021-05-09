@@ -10,10 +10,36 @@
     @include all_transition_durations;
 
     .text_section {
-        float: left;
-        width: 86%;
-        .time_text, .idea_text, .displayName_text  {
-            //font-weight: bold;
+        width: 100%;
+        .text_up_section {
+            display: grid;
+            grid-template-columns: auto auto;
+            .time_text {
+                text-align: left;
+                font-size: 0.75pc;
+                margin: 0pc;
+                padding-top: 0.5pc;
+                padding-bottom: 0.5pc;
+                @include themed('color', 'text');
+                @include all_transition_durations;
+            }
+            .delete_button {
+                float: left;
+                border: 0pc;
+                border-radius: 0.2pc;
+                width: 5pc;
+                height: 2pc;
+                cursor: pointer;
+                @include themed('color', 'accent');
+                @include themed('background-color', 'inputfield');
+                @include all_transition_durations;
+                &:hover{
+                    @include themed('color', 'alttext');
+                    @include themed('background-color', 'accentplus');
+                }
+            }
+        }
+        .idea_text, .displayName_text  {
             text-align: left;
             margin: 0pc;
             padding-top: 0.5pc;
@@ -21,34 +47,17 @@
             @include themed('color', 'text');
             @include all_transition_durations;
         }
-        .time_text, .displayName_text {
-            //font-weight: bold;
-            font-size: 0.5pc;
-        }
-        .delete_button {
-            float: left;
-            border: 0pc;
-            border-radius: 0.3pc;
-            margin-top: 0.5pc;
-            margin-bottom: 0.5pc;
-            width: 5pc;
-            height: 2pc;
-            cursor: pointer;
+        .displayName_text {
+            font-size: 0.75pc;
             @include themed('color', 'accent');
-            @include themed('background-color', 'inputfield');
-            @include all_transition_durations;
-            &:hover{
-                @include themed('color', 'alttext');
-                @include themed('background-color', 'accentplus');
-            }
         }
     }
 
     .button_section {
         display: grid;
-        float: left;
-        width: 9%;
-        height: 100%;
+        grid-template-columns: auto auto auto;
+        justify-content: center;
+        margin-top: 1pc;
         input {
             position: absolute;
             top: 50%;
@@ -68,7 +77,7 @@
         button {
             width: 100%;
             border: 0pc;
-            border-radius: 0.5pc;
+            border-radius: 0.3pc;
             cursor: pointer;
             filter: invert(0%);
             @include themed('background-color', 'inputfield');
@@ -83,7 +92,7 @@
         .votes_text {
             text-align: center;
             font-weight: bold;
-            font-size: 1pc;
+            font-size: 0.75pc;
             margin: auto;
             @include all_transition_durations;
             @include themed('color', 'accent');
@@ -98,11 +107,15 @@
         padding: 1.5pc;
         width: 30pc;
         .text_section {
-            padding-left: 0.5pc;
-            padding-right: 1pc;
+            h2 {
+                font-size: 1pc;
+            }
+            .text_up_section {
+                grid-gap: 19pc;
+            }
         }
         .button_section {
-            grid-gap: 0.5pc;
+            grid-gap: 1.5pc;
         }
     }
 }
@@ -112,12 +125,19 @@
     .card{
         margin: 0.5pc 0pc;
         padding: 1pc;
+        width: 16pc;
         .text_section {
             padding-left: 0pc;
             padding-right: 0pc;
+            h2 {
+                font-size: 0.85pc;
+            }
+            .text_up_section {
+                grid-gap: 5pc;
+            }
         }
         .button_section {
-            grid-gap: 0.25pc;
+            grid-gap: 1.25pc;
         }
     }
 }

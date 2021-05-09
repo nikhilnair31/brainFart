@@ -54,12 +54,12 @@ const Card = (props) => {
             <div className="text_section">
                 {/* <p className="time_text" >{props.post_id}</p>
                 <p className="time_text" >{props.op_uid}</p> */}
-                <p className="time_text" >{utcToTime(props.post_utc)}</p>
-                <h2 className="idea_text" >{props.post_idea_text}</h2>
+                <div className="text_up_section">
+                    <p className="time_text" >{utcToTime(props.post_utc)}</p>
+                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>Delete </button>}
+                </div>
                 <p className="displayName_text" >{props.op_displayName}</p>
-                {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>Delete
-                    {/* <img src="https://img.icons8.com/material/26/000000/delete-sign--v1.png"  alt="delete icon"/> */}
-                </button>}
+                <h2 className="idea_text" >{props.post_idea_text}</h2>
             </div>
             <div className="button_section">
                 <button className="upvote_button" onClick={() => voteThisIdea(1)}>
