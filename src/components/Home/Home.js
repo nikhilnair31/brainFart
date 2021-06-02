@@ -19,7 +19,7 @@ const Home = (props) => {
     });
 
     useEffect(() => {  
-        dbref.collection("posts").onSnapshot(snapshot => {
+        dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
             setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
         });
     }, []);

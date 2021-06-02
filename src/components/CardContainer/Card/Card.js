@@ -39,13 +39,29 @@ const Card = (props) => {
     }
 
     const utcToTime = (utc) => {
-        // Create a new JavaScript Date object based on the timestamp
-        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-        var date = new Date(utc * 1000);
-        var hours = date.getHours();
-        var minutes = "0" + date.getMinutes();
-        var formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes.substr(-2);
-        // console.log(`utcToTime: ${formattedTime}\n`);
+        var dateobj, formattedTime, date, month, year, hours, minutes;
+        if(utc.toString().length == 10){
+            dateobj = new Date(0);
+            dateobj.setUTCSeconds(utc);
+            date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
+            month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
+            year = dateobj.getFullYear();
+            hours = dateobj.getHours();
+            minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
+            formattedTime = dateobj.toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
+        }
+        else if(utc.toString().length == 13){
+            dateobj = new Date(10);
+            dateobj.setUTCSeconds(utc);
+            date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
+            month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
+            year = dateobj.getFullYear();
+            hours = dateobj.getHours();
+            minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
+            formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
+        }
+        //formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
+        console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
         return formattedTime;
     }
 
