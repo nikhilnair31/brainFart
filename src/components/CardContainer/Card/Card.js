@@ -38,6 +38,7 @@ const Card = (props) => {
         dbref.collection('posts').doc(props.post_id).delete();
     }
 
+    //make date in DD/MM/YYYY HH:MM AM/PM format
     const utcToTime = (utc) => {
         var dateobj, formattedTime, date, month, year, hours, minutes;
         if(utc.toString().length == 10){
@@ -60,8 +61,8 @@ const Card = (props) => {
             minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
             formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
         }
-        //formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
-        console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
+        // formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
+        // console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
         return formattedTime;
     }
 
