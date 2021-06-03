@@ -26,7 +26,7 @@
         - [x] Check why user context here shows null even though it prints in other scripts
         - [x] Add conditional render if user.isAnon is true
 * Idea card
-    - [ ] Save upvote or downvote to show as changed button color from load
+        - [x] Save upvote or downvote to show as changed button color from load
         - [x] Add functionality to up/down vote buttons considering 1 user can only submit 1 up/down vote for an idea to avoid spamming.
         - [x] Figure out how to update upvote on only 1 idea and not pull full database to avoid re-render of whole list
         - [x] Trigger re-render of all ideas after deleting some idea

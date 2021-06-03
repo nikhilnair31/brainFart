@@ -64,7 +64,7 @@
         justify-content: center;
         margin-top: 1pc;
         border-radius: 0.7pc;
-        @include themed('background-color', 'accent');
+        @include themed('background-color', 'inputfield');
         button {
             border: 0pc;
             border-radius: 0.5pc;
@@ -88,7 +88,7 @@
             font-size: 1pc;
             margin: auto;
             @include all_transition_durations;
-            @include themed('color', 'alttext');
+            @include themed('color', 'accent');
         }
     }
 }
