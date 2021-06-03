@@ -2,6 +2,7 @@
 * General
     - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
+    - [ ] Center brainFart text
     - [ ] Have footer stay at botom of page even while searching
         - [x] Added delete confirmation component
         - [x] Add site logo
@@ -19,6 +20,7 @@
     - [ ] Find a way to get high res user icon
     - [ ] Allow for changing user ids?
 * AddIdea
+    - [ ] Add editable category tag to all posts
     - [ ] Have textarea height increase automatically
         - [x] Have inputtext element height increase for long texts
         - [x] Check why user context here shows null even though it prints in other scripts

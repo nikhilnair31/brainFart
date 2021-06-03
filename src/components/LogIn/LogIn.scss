@@ -7,7 +7,7 @@
     .login {
         position: absolute;
         top: 50%; left: 50%;
-        border-radius: 1pc;
+        border-radius: 0.7pc;
         @include themed('background-color', 'card');
         @include all_transition_durations;
         
@@ -79,7 +79,7 @@
             
             .login_button {
                 border: 0pc;
-                border-radius: 1pc;
+                border-radius: 0.5pc;
                 padding: 0pc;
                 margin: 0.7pc auto;
                 height: 3pc;
@@ -123,7 +123,7 @@
             }
 
             .login_button {
-                border-radius: 0.7pc;
+                border-radius: 0.5pc;
                 padding: 0pc;
                 margin: 0.5pc auto;
                 height: 3pc;

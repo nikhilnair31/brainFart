@@ -1,5 +1,5 @@
 import React, { useContext }  from 'react';
-import { UserContext } from '../../providers/UserProvider';
+import { ToastContainer, toast } from 'react-toastify';
 import { ConfirmContext } from '../../providers/ConfirmProvider';
 import { dbref } from '../../helpers/firebase.js';
 import './Confirm.scss';
@@ -11,8 +11,11 @@ const Confirm = () => {
 
     const delOrCancel = (toDel) => {
         console.log(`delOrCancel\ntoDel: ${toDel} | postID: ${postID}`);
-        if (toDel) 
+        if (toDel) {
             dbref.collection('posts').doc(postID).delete();
+            toast("Idea deleted.", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
+                pauseOnHover: true, draggable: false, progress: undefined, });
+        }
         document.querySelector(".confirm").style.display = "none"
         setShowConf(false)
     }
