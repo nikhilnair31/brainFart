@@ -66,13 +66,45 @@ const Card = (props) => {
         return formattedTime;
     }
 
+    const timeDifference = (utc) => {
+        var msPerMinute = 60 * 1000;
+        var msPerHour = msPerMinute * 60;
+        var msPerDay = msPerHour * 24;
+        var msPerMonth = msPerDay * 30;
+        var msPerYear = msPerDay * 365;
+    
+        var now = Math.floor(Date.now())
+        var elapsed = now - utc;
+        console.log(elapsed, '=', now, '-', utc);
+    
+        if (elapsed < msPerMinute) {
+            return Math.round(elapsed/1000) + ' seconds ago';   
+        }
+        else if (elapsed < msPerHour) {
+            return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+        }
+        else if (elapsed < msPerDay ) {
+            return Math.round(elapsed/msPerHour ) + ' hours ago';   
+        }
+        else if (elapsed < msPerMonth) {
+            return Math.round(elapsed/msPerDay) + ' days ago';   
+        }
+        else if (elapsed < msPerYear) {
+            return Math.round(elapsed/msPerMonth) + ' months ago';   
+        }
+        else {
+            //return 'around ' + Math.round(elapsed/msPerYear ) + ' years ago'; 
+            return Math.round(elapsed/msPerYear ) + ' years ago';   
+        }
+    }
+
     return (
         <div className="card">
             <div className="text_section">
                 {/* <p className="time_text" >{props.post_id}</p>
                 <p className="time_text" >{props.op_uid}</p> */}
                 <div className="text_up_section">
-                    <p className="time_text" >{utcToTime(props.post_utc)}</p>
+                    <p className="time_text" >{timeDifference(props.post_utc)}</p>
                     {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>Delete </button>}
                 </div>
                 <p className="displayName_text" >{props.op_displayName}</p>
