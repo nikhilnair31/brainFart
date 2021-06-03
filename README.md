@@ -3,6 +3,7 @@
     - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
     - [ ] Have footer stay at botom of page even while searching
+        - [x] Added delete confirmation component
         - [x] Add site logo
         - [x] Style the logout button
         - [x] Add functional search bar

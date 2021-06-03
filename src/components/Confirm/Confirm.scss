@@ -1,0 +1,111 @@
+@import "../../color-themes";
+
+.confirm {
+    display: none;
+    position:fixed;
+    vertical-align: middle;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    // margin: 0pc;
+    // padding: 1pc;
+    z-index: 10;
+    background-color: rgba(30, 30, 30, 0.75);
+
+    .confirm_section {
+        position:fixed;
+        border-radius: 0.7pc;
+        @include themed('color', 'text');
+        @include themed('background', 'inputfield');
+
+        button {
+            cursor: pointer;
+            filter: invert(0%);
+            @include themed('color', 'text');
+            @include themed('background-color', 'card');
+            @include all_transition_durations;
+            &:active {
+                @include themed('background-color', 'accent');
+            }
+            &:hover{
+                @include themed('background-color', 'accentplus');
+            }
+        }
+
+        .confirm_button {
+            @include themed('background-color', 'accent');
+        }
+    }
+
+    :after {
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        -moz-opacity: 0.7;
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .confirm_section {
+        top: 50%;
+        left: 49%;
+        transform: translate(-50%,-50%);
+        height: 17%;
+        width: 20%;
+        margin: 1pc;
+        padding: 1pc;
+
+        .confirm_text {
+            margin: 1pc 1pc;
+            font-size: 1.5pc;
+        }
+
+        button {
+            border: 0pc;
+            border-radius: 0.4pc;
+            padding: 0.5pc;
+            margin: 0.7pc 0.7pc;
+            height: 30%;
+            width: 40%;
+            img {
+                max-width: 25%;
+            }
+            .button_text {
+                margin: 0pc;
+            }
+        }
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .confirm_section {
+        top: 50%;
+        left: 49%;
+        transform: translate(-50%,-50%);
+        height: 17%;
+        width: 60%;
+        margin: 1pc;
+        padding: 1pc;
+
+        .confirm_text {
+            margin: 1pc 1pc;
+            font-size: 1.5pc;
+        }
+
+        button {
+            border: 0pc;
+            border-radius: 0.4pc;
+            padding: 0.5pc;
+            margin: 0pc 0.7pc;
+            height: 35%;
+            width: 40%;
+            img {
+                max-width: 35%;
+            }
+            .button_text {
+                margin: 0pc;
+            }
+        }
+    }
+}

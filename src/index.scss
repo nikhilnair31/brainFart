@@ -7,10 +7,10 @@
     font-display: swap;
 }
 
-$scroll_track_color: rgba(35, 35, 35, 0.01);
-$scroll_thumb_color: rgba(25, 25, 25, 0.02);
-$scroll_accent_color: rgba(15, 15, 15, 0.03);
-$scroll_width: 0rem;
+$scroll_track_color: rgba(35, 35, 35, 0.5);
+$scroll_thumb_color: rgba(50, 50, 50, 0.5);
+$scroll_accent_color: rgba(60, 60, 60, 0.5);
+$scroll_width: 1rem;
 
 html {
 	height: 100%;

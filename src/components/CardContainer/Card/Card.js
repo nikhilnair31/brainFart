@@ -1,10 +1,14 @@
 import React, { useContext}  from 'react';
 import { UserContext } from '../../../providers/UserProvider';
+import { ConfirmContext } from '../../../providers/ConfirmProvider';
 import { dbref } from '../../../helpers/firebase.js';
 import './Card.scss';
 
 const Card = (props) => {
     const user = useContext(UserContext);
+    const {conf, pid} = useContext(ConfirmContext);
+    const [showConf, setShowConf] = conf;
+    const [postID, setPostID] = pid;
 
     const voteThisIdea = (inverter) => {
         dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
@@ -33,9 +37,11 @@ const Card = (props) => {
         });
     }
 
-    const deleteMyIdea = () => {
-        console.log(`deleted post`);
-        dbref.collection('posts').doc(props.post_id).delete();
+    const showConfirmation = () => {
+        console.log(`showConfirmation\nshowConf: ${showConf} | props.post_id: ${props.post_id}`);
+        document.querySelector(".confirm").style.display = "flex";
+        setPostID(props.post_id)
+        setShowConf(true);
     }
 
     //make date in DD/MM/YYYY HH:MM AM/PM format
@@ -75,7 +81,7 @@ const Card = (props) => {
     
         var now = Math.floor(Date.now())
         var elapsed = now - utc;
-        console.log(elapsed, '=', now, '-', utc);
+        // console.log(elapsed, '=', now, '-', utc);
     
         if (elapsed < msPerMinute) {
             return Math.round(elapsed/1000) + ' seconds ago';   
@@ -105,7 +111,7 @@ const Card = (props) => {
                 <p className="time_text" >{props.op_uid}</p> */}
                 <div className="text_up_section">
                     <p className="time_text" >{timeDifference(props.post_utc)}</p>
-                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => deleteMyIdea(props.postid)}>Delete </button>}
+                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => showConfirmation()}>Delete </button>}
                 </div>
                 <p className="displayName_text" >{props.op_displayName}</p>
                 <h2 className="idea_text" >{props.post_idea_text}</h2>
