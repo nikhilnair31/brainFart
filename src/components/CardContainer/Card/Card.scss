@@ -24,12 +24,13 @@
                 @include all_transition_durations;
             }
             .delete_button {
-                float: left;
+                position: relative;
                 border: 0pc;
                 border-radius: 0.2pc;
-                width: 5pc;
+                width: 2pc;
                 height: 2pc;
                 cursor: pointer;
+                left: 30%;
                 @include themed('color', 'accent');
                 @include themed('background-color', 'inputfield');
                 @include all_transition_durations;
@@ -39,17 +40,35 @@
                 }
             }
         }
-        .idea_text, .displayName_text  {
+        .text_mid_section {
+            display: grid;
+            grid-template-columns: auto auto;
+            .tag_text {
+                font-size: 0.75pc;
+                margin-right: 0pc;
+                padding-top: 0.5pc;
+                padding-bottom: 0.5pc;
+                border-radius: 0.4pc;
+                @include themed('color', 'accent');
+                @include themed('background-color', 'inputfield');
+                @include all_transition_durations;
+            }
+            .displayName_text {
+                margin: 0pc;
+                padding-top: 0.5pc;
+                padding-bottom: 0.5pc;
+                text-align: left;
+                font-weight: bold;
+                font-size: 0.75pc;
+                @include themed('color', 'accent');
+                @include all_transition_durations;
+            }
+        }
+        .idea_text {
             margin: 0pc;
             padding-top: 0.5pc;
             padding-bottom: 0.5pc;
             @include all_transition_durations;
-        }
-        .displayName_text {
-            text-align: left;
-            font-weight: bold;
-            font-size: 0.75pc;
-            @include themed('color', 'accent');
         }
         .idea_text {
             text-align: justify;
@@ -104,7 +123,10 @@
                 font-size: 1pc;
             }
             .text_up_section {
-                grid-gap: 19pc;
+                grid-gap: 21pc;
+            }
+            .text_mid_section {
+                grid-gap: 21pc;
             }
         }
         .button_section {
@@ -125,6 +147,9 @@
                 font-size: 0.85pc;
             }
             .text_up_section {
+                grid-gap: 12pc;
+            }
+            .text_mid_section {
                 grid-gap: 12pc;
             }
         }

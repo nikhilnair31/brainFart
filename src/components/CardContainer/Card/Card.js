@@ -13,12 +13,12 @@ const Card = (props) => {
     const downRef = useRef(null);
 
     useEffect(() => {  
-        console.log(`useEffect`);
+        //console.log(`useEffect`);
         addColorToVoted()
     }, []);
 
     const addColorToVoted = () => {
-        console.log(`addColorToVoted`);
+        //console.log(`addColorToVoted`);
         dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
             var voteDir = 0;
             var uidInVotes = false;
@@ -26,7 +26,7 @@ const Card = (props) => {
                 if(snapshot.docs[i].id === user.uid){
                     uidInVotes = true; 
                     voteDir = snapshot.docs[i].data().voteDirection;
-                    console.log(`addColorToVoted\n props.post_id:${props.post_id} | voteDir:${voteDir} | uidInVotes:${uidInVotes} | user.uid:${user.uid}\n`);
+                    //console.log(`addColorToVoted\n props.post_id:${props.post_id} | voteDir:${voteDir} | uidInVotes:${uidInVotes} | user.uid:${user.uid}\n`);
                     break;
                 }
             }
@@ -158,9 +158,12 @@ const Card = (props) => {
                 <p className="time_text" >{props.op_uid}</p> */}
                 <div className="text_up_section">
                     <p className="time_text" >{timeDifference(props.post_utc)}</p>
-                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => showConfirmation()}>Delete </button>}
+                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => showConfirmation()}>X</button>}
                 </div>
-                <p className="displayName_text" >{props.op_displayName}</p>
+                <div className="text_mid_section">
+                    <p className="displayName_text" >{props.op_displayName}</p>
+                    {(typeof props.post_idea_tag !== 'undefined') && <p className="tag_text" >{props.post_idea_tag}</p>}
+                </div>
                 <h2 className="idea_text" >{props.post_idea_text}</h2>
             </div>
             <div className="button_section">

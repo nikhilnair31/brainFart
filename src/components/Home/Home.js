@@ -17,7 +17,8 @@ const Home = (props) => {
 
     const filteredPosts = posts.filter(idea => {
         return idea.post.idea.toLowerCase().includes(searchedIdea.toLowerCase()) || 
-            idea.post.displayName.toLowerCase().includes(searchedIdea.toLowerCase());
+            idea.post.displayName.toLowerCase().includes(searchedIdea.toLowerCase()) || 
+                ((typeof idea.post.tag !== 'undefined') ? idea.post.tag.toLowerCase().includes(searchedIdea.toLowerCase()) : null);
     });
 
     useEffect(() => {  
@@ -36,7 +37,7 @@ const Home = (props) => {
                 <CardContainer>
                     {   
                         filteredPosts.map(({id, post}) => (
-                            <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
+                            <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} post_idea_tag={post.tag} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
                         ))
                     }
                 </CardContainer>
