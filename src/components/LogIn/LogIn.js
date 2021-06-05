@@ -13,7 +13,7 @@ const LogIn = () => {
             console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
             history.push('/home');
         }
-    }, [user])
+    }, [user, history])
 
     const signInWithGoogle = () => {
         auth.signInWithPopup(googleProvider).then((res) => {
@@ -50,7 +50,7 @@ const LogIn = () => {
                     <p> Login to view & post ideas</p>
                     <p> Go anonymous to only view ideas </p>
                     <p> By logging in you accept our </p>
-                    <a href="#">Privacy Policy</a>
+                    <a href="https://docs.google.com/document/d/14Q2jeHABjQZgS-B4zeXYWJ7g1-WPgBSSEIqeVNpG414/edit?usp=sharing">Privacy Policy</a>
                 </div>
                 <div className="login_button_container">
                     <button className="login_button" onClick={signInWithGoogle}>

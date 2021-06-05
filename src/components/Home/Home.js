@@ -22,9 +22,15 @@ const Home = (props) => {
     });
 
     useEffect(() => {  
+        let isCancelled = false;
         dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
-            setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
+            if (!isCancelled) {
+                setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
+            }
         });
+        return () => {
+            isCancelled = true;
+        };
     }, []);
 
     return (

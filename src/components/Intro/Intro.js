@@ -4,9 +4,9 @@ import { UserContext } from '../../providers/UserProvider';
 import './Intro.scss';
 
 const Intro = () => {
+    const history = useHistory();
     const user = useContext(UserContext);
 	const [photoURL, setPhotoURL] = useState("https://img.icons8.com/ios/30/000000/user-male-circle.png");
-    const history = useHistory();
 
     useEffect(() => {
         // console.log(`INTRO\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
@@ -22,7 +22,7 @@ const Intro = () => {
                 document.getElementsByClassName("personal_img")[0].style.filter = "invert(0%)";
             }
         }
-    }, [user]);
+    }, [user, history]);
 
     return (
         <div className="intro_wrapper">

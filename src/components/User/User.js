@@ -27,7 +27,7 @@ const User = () => {
                 document.getElementsByClassName("user_img")[0].style.filter = "invert(100%)";
             }
         }
-    }, [user]);
+    }, [user, history]);
 
     const logOut = () => {
         auth.signOut().then(()=> {

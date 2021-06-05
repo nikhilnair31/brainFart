@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef }  from 'react';
+import React, { useContext, useEffect, useRef, useCallback }  from 'react';
 import { UserContext } from '../../../providers/UserProvider';
 import { ConfirmContext } from '../../../providers/ConfirmProvider';
 import { dbref } from '../../../helpers/firebase.js';
@@ -12,12 +12,35 @@ const Card = (props) => {
     const upRef = useRef(null);
     const downRef = useRef(null);
 
-    useEffect(() => {  
-        //console.log(`useEffect`);
-        addColorToVoted()
-    }, []);
+    // const addColorToVoted = () => {
+    //     //console.log(`addColorToVoted`);
+    //     dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
+    //         var voteDir = 0;
+    //         var uidInVotes = false;
+    //         for(var i=0; i<snapshot.docs.length; i++){
+    //             if(snapshot.docs[i].id === user.uid){
+    //                 uidInVotes = true; 
+    //                 voteDir = snapshot.docs[i].data().voteDirection;
+    //                 //console.log(`addColorToVoted\n props.post_id:${props.post_id} | voteDir:${voteDir} | uidInVotes:${uidInVotes} | user.uid:${user.uid}\n`);
+    //                 break;
+    //             }
+    //         }
+    //         if(uidInVotes){
+    //             if(voteDir === 1){
+    //                 upRef.current.style.backgroundColor = "#fe2b5d";
+    //             }
+    //             else if(voteDir === -1){
+    //                 downRef.current.style.backgroundColor = "#fe2b5d";
+    //             }
+    //         }
+    //         else if(voteDir === 0){
+    //             upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
+    //             downRef.current.style.backgroundColor = "rgb(45, 45, 45)";
+    //         }
+    //     });
+    // }
 
-    const addColorToVoted = () => {
+    const addColorToVoted = useCallback(() => {
         //console.log(`addColorToVoted`);
         dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
             var voteDir = 0;
@@ -31,10 +54,10 @@ const Card = (props) => {
                 }
             }
             if(uidInVotes){
-                if(voteDir == 1){
+                if(voteDir === 1){
                     upRef.current.style.backgroundColor = "#fe2b5d";
                 }
-                else if(voteDir == -1){
+                else if(voteDir === -1){
                     downRef.current.style.backgroundColor = "#fe2b5d";
                 }
             }
@@ -43,7 +66,12 @@ const Card = (props) => {
                 downRef.current.style.backgroundColor = "rgb(45, 45, 45)";
             }
         });
-    }
+    }, [props.post_id, user.uid])
+
+    useEffect(() => {  
+        //console.log(`useEffect`);
+        addColorToVoted()
+    }, [addColorToVoted]);
 
     const voteThisIdea = (inverter) => {
         var voteDir = 0;
@@ -93,32 +121,32 @@ const Card = (props) => {
     }
 
     //make date in DD/MM/YYYY HH:MM AM/PM format
-    const utcToTime = (utc) => {
-        var dateobj, formattedTime, date, month, year, hours, minutes;
-        if(utc.toString().length == 10){
-            dateobj = new Date(0);
-            dateobj.setUTCSeconds(utc);
-            date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
-            month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
-            year = dateobj.getFullYear();
-            hours = dateobj.getHours();
-            minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
-            formattedTime = dateobj.toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
-        }
-        else if(utc.toString().length == 13){
-            dateobj = new Date(10);
-            dateobj.setUTCSeconds(utc);
-            date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
-            month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
-            year = dateobj.getFullYear();
-            hours = dateobj.getHours();
-            minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
-            formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
-        }
-        // formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
-        // console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
-        return formattedTime;
-    }
+    // const utcToTime = (utc) => {
+    //     var dateobj, formattedTime, date, month, year, hours, minutes;
+    //     if(utc.toString().length == 10){
+    //         dateobj = new Date(0);
+    //         dateobj.setUTCSeconds(utc);
+    //         date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
+    //         month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
+    //         year = dateobj.getFullYear();
+    //         hours = dateobj.getHours();
+    //         minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
+    //         formattedTime = dateobj.toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
+    //     }
+    //     else if(utc.toString().length == 13){
+    //         dateobj = new Date(10);
+    //         dateobj.setUTCSeconds(utc);
+    //         date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
+    //         month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
+    //         year = dateobj.getFullYear();
+    //         hours = dateobj.getHours();
+    //         minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
+    //         formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
+    //     }
+    //     // formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
+    //     // console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
+    //     return formattedTime;
+    // }
     const timeDifference = (utc) => {
         var msPerMinute = 60 * 1000;
         var msPerHour = msPerMinute * 60;

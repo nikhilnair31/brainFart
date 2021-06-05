@@ -1,5 +1,5 @@
 import React, { useContext }  from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { ConfirmContext } from '../../providers/ConfirmProvider';
 import { dbref } from '../../helpers/firebase.js';
 import './Confirm.scss';
