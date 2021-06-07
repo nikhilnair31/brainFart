@@ -8,12 +8,10 @@
 
         .intro_head{
             display: grid;
-            grid-template-columns: auto auto auto;
             justify-items: center;
 
             .title{
                 margin: 0pc;
-                padding: 0.5pc;
                 @include themed('color', 'text');
                 @include all_transition_durations;
             }
@@ -43,10 +41,12 @@
         padding-top: 1pc;
         text-align: center;
         .intro_head{
+            grid-template-columns: auto auto auto;
             margin: 1pc 25pc;
             grid-gap: 0pc;
         }
         .title {
+            padding: 0.5pc;
             margin: auto 1pc;
             font-size: 3pc;
         }
@@ -77,10 +77,13 @@
         padding-top: 1pc;
         text-align: left;
         .intro_head{
+            grid-template-columns: auto auto;
             margin: 1pc 0pc;
-            grid-gap: 3pc;
+            grid-gap: 7pc;
         }
         .title {
+            padding-top: 0.5pc;
+            padding-bottom: 0.5pc;
             margin: auto 0pc;
             font-size: 2pc;
         }

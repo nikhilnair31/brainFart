@@ -10,18 +10,9 @@ $themes: (
 		footer: rgb(235, 235, 235),
 
         text: rgb(10, 10, 10),
+        textplus: rgb(25, 25, 25),
 		alttext: rgb(255, 255, 255),
 		inputtext: rgb(15, 15, 15),
-		
-		topbutton: rgb(225, 225, 225),
-		iconinvert: invert(20%),
-		iconinverthighlight: invert(40%),
-
-		iconshadow: inset 3px 6px 10px 0px #bdbdbd,
-		imgshadow: 6px 11px 20px 0px rgb(230, 230, 230),
-		slidebtnshadow: 6px 11px 20px 0px #818181,
-		cardshadow: 6px 13px 10px 0px rgb(240, 240, 240),
-		topbuttonshadow: 3px 8px 10px 0px rgb(180, 180, 180),
     ),
     dark: (
         accent: #fe2b5d,
@@ -32,18 +23,9 @@ $themes: (
 		footer: #ff567d,
 
         text: rgb(255, 255, 255),
+        textplus: rgb(155, 155, 155),
 		alttext: rgb(20, 20, 20),
 		inputtext: rgb(201, 201, 201),
-
-		topbutton: rgb(20, 20, 20),
-		iconinvert: invert(0%),
-		iconinverthighlight: invert(20%),
-
-		iconshadow: 3px 6px 10px 0px #000000,
-		imgshadow: 6px 11px 20px 0px #0f0f0f,
-		slidebtnshadow: 6px 11px 20px 0px #080808,
-		cardshadow: 6px 13px 15px 0px #0d0d0d,
-		topbuttonshadow: 3px 8px 15px 0px #0d0d0d,
     ),
 );
 

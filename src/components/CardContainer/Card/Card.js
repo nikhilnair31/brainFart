@@ -187,7 +187,7 @@ const Card = (props) => {
                 <p className="time_text" >{props.op_uid}</p> */}
                 <div className="text_up_section">
                     <p className="time_text" >{timeDifference(props.post_utc)}</p>
-                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => showConfirmation()}>X</button>}
+                    {(user.uid === props.op_uid) && <button className="delete_button" onClick={() => showConfirmation()}>delete</button>}
                 </div>
                 <div className="text_mid_section">
                     <p className="displayName_text" >{props.op_displayName}</p>

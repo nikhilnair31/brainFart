@@ -24,10 +24,8 @@
                 @include all_transition_durations;
             }
             .delete_button {
-                position: relative;
                 border: 0pc;
-                border-radius: 0.2pc;
-                width: 2pc;
+                border-radius: 0.3pc;
                 height: 2pc;
                 cursor: pointer;
                 left: 30%;
@@ -44,13 +42,15 @@
             display: grid;
             grid-template-columns: auto auto;
             .tag_text {
+                font-weight: 10;
+                font-style: italic;
                 font-size: 0.75pc;
                 margin-right: 0pc;
                 padding-top: 0.5pc;
                 padding-bottom: 0.5pc;
-                border-radius: 0.4pc;
-                @include themed('color', 'accent');
-                @include themed('background-color', 'inputfield');
+                border-radius: 0.3pc;
+                @include themed('color', 'textplus');
+                // @include themed('background-color', 'inputfield');
                 @include all_transition_durations;
             }
             .displayName_text {
@@ -145,10 +145,10 @@
                 font-size: 0.7pc;
             }
             .text_up_section {
-                grid-gap: 9pc;
+                grid-gap: 7pc;
             }
             .text_mid_section {
-                grid-gap: 9pc;
+                grid-gap: 7pc;
             }
         }
         .button_section {
