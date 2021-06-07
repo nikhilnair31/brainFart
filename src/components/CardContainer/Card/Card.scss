@@ -10,7 +10,7 @@
     @include all_transition_durations;
 
     .text_section {
-        width: 100%;
+        // width: 100%;
         .text_up_section {
             display: grid;
             grid-template-columns: auto auto;
@@ -65,15 +65,13 @@
             }
         }
         .idea_text {
+            text-align: justify;
+            font-weight: lighter;
             margin: 0pc;
             padding-top: 0.5pc;
             padding-bottom: 0.5pc;
-            @include all_transition_durations;
-        }
-        .idea_text {
-            text-align: justify;
-            font-weight: lighter;
             @include themed('color', 'text');
+            @include all_transition_durations;
         }
     }
 
@@ -144,13 +142,13 @@
             padding-left: 0pc;
             padding-right: 0pc;
             h2 {
-                font-size: 0.85pc;
+                font-size: 0.7pc;
             }
             .text_up_section {
-                grid-gap: 12pc;
+                grid-gap: 9pc;
             }
             .text_mid_section {
-                grid-gap: 12pc;
+                grid-gap: 9pc;
             }
         }
         .button_section {

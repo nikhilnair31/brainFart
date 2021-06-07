@@ -9,17 +9,16 @@
         .intro_head{
             display: grid;
             grid-template-columns: auto auto auto;
-            margin: 1pc auto;
+            justify-items: center;
 
             .title{
-                float: left;
+                margin: 0pc;
                 padding: 0.5pc;
                 @include themed('color', 'text');
                 @include all_transition_durations;
             }
             .logo_img, .personal_img {
-                float: left;
-                margin: auto;
+                margin: auto 0pc;
                 vertical-align: middle;
                 border-radius: 50%;
                 @include all_transition_durations;
@@ -41,10 +40,11 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .intro{
-        padding-top: 3pc;
+        padding-top: 1pc;
         text-align: center;
         .intro_head{
-            margin: auto;
+            margin: 1pc 25pc;
+            grid-gap: 0pc;
         }
         .title {
             margin: auto 1pc;
@@ -57,7 +57,7 @@
         }
         .personal_img {
             float: left;
-            width: 2pc;
+            width: 3pc;
             background-color: white;
         }
     }
@@ -77,11 +77,12 @@
         padding-top: 1pc;
         text-align: left;
         .intro_head{
-            grid-gap: 0pc;
+            margin: 1pc 0pc;
+            grid-gap: 3pc;
         }
         .title {
             margin: auto 0pc;
-            font-size: 3pc;
+            font-size: 2pc;
         }
         .logo_img {
             float: left;

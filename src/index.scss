@@ -12,17 +12,20 @@ $scroll_thumb_color: rgba(50, 50, 50, 0.5);
 $scroll_accent_color: rgba(60, 60, 60, 0.5);
 $scroll_width: 1rem;
 
-html {
+* {
+    //outline: 1px solid #f00 !important;
+}
+
+html, body {
 	height: 100%;
 	width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 }
 
 body {
-	margin: 0;
-	height: 100%;
-	width: 100%;
     font-family: GothamLight, Helvetica, Arial, Sans-Serif;
-    overflow-x: hidden;
     background-color: rgb(20, 20, 20);
 }
 

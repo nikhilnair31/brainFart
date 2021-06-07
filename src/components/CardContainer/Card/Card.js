@@ -106,6 +106,7 @@ const Card = (props) => {
                 else if(voteDir !== inverter){
                     //console.log(`voteDir != inverter so delete vote from sub-coll and vote in reverse again`);
                     dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
+                    //dbref.collection('posts').doc(props.post_id).update({'upvotes': props.post_upvotes});
                     voteThisIdea(inverter);
                 }
             }
