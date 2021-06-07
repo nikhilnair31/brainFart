@@ -40,14 +40,10 @@ const Confirm = () => {
         <div className="confirm" ref={wrapperRef}>
             <div className="confirm_section">
                 <p className="confirm_text" >Are you sure?</p>
-                <button className="confirm_button" onClick={() => delOrCancel(true)}>
-                    <h5 className="button_text" >Confirm</h5>
-                    {/* <img className="button_img" src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="confirm icon"/> */}
-                </button>
-                <button className="cancel_button" onClick={() => delOrCancel(false)}>
-                    <h5 className="button_text" >Cancel</h5>
-                    {/* <img className="button_img" src="https://img.icons8.com/ios-glyphs/24/000000/google-logo.png" alt="cancel icon"/> */}
-                </button>
+                <div className="button_section">
+                    <button className="confirm_button" onClick={() => delOrCancel(true)}>Confirm</button>
+                    <button className="cancel_button" onClick={() => delOrCancel(false)}>Cancel</button>
+                </div>
             </div>
         </div>
     );

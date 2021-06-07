@@ -8,7 +8,6 @@
     z-index: 0;
 
     .search_img {
-        padding-right: 0.5pc;
         width: 3pc;
         border-radius: 0.7pc 0pc 0pc 0.7pc;
         @include themed('background-color', 'inputfield');
@@ -24,7 +23,6 @@
     }
 
     .filter_img {
-        padding-right: 0.5pc;
         width: 3pc;
         border-radius: 0pc 0.7pc 0.7pc 0pc;
         @include themed('background-color', 'inputfield');

@@ -3,37 +3,40 @@
 .confirm {
     display: flex;
     position:fixed;
-    vertical-align: middle;
     text-align: center;
     height: 100%;
     width: 100%;
-    // margin: 0pc;
-    // padding: 1pc;
     z-index: 10;
     background-color: rgba(30, 30, 30, 0.75);
 
     .confirm_section {
         position:fixed;
-        border-radius: 0.7pc;
+        border-radius: 0.5pc;
         @include themed('color', 'text');
         @include themed('background', 'inputfield');
 
-        button {
-            cursor: pointer;
-            filter: invert(0%);
-            @include themed('color', 'text');
-            @include themed('background-color', 'card');
-            @include all_transition_durations;
-            &:active {
+        .button_section{
+            display: flex;
+            justify-content: space-between;
+            button {
+                cursor: pointer;
+                border: 0pc;
+                border-radius: 0.3pc;
+                filter: invert(0%);
+                @include themed('color', 'text');
+                @include themed('background-color', 'card');
+                @include all_transition_durations;
+                &:active {
+                    @include themed('background-color', 'accent');
+                }
+                &:hover{
+                    @include themed('background-color', 'accentplus');
+                }
+            }
+
+            .confirm_button {
                 @include themed('background-color', 'accent');
             }
-            &:hover{
-                @include themed('background-color', 'accentplus');
-            }
-        }
-
-        .confirm_button {
-            @include themed('background-color', 'accent');
         }
     }
 
@@ -50,28 +53,18 @@
         top: 50%;
         left: 49%;
         transform: translate(-50%,-50%);
-        height: 17%;
-        width: 20%;
-        margin: 1pc;
-        padding: 1pc;
+        padding: 2pc;
 
         .confirm_text {
-            margin: 1pc 1pc;
+            margin-top: 0pc;
             font-size: 1.5pc;
         }
 
-        button {
-            border: 0pc;
-            border-radius: 0.4pc;
-            padding: 0.5pc;
-            margin: 0.7pc 0.7pc;
-            height: 30%;
-            width: 40%;
-            img {
-                max-width: 25%;
-            }
-            .button_text {
-                margin: 0pc;
+        .button_section{
+            grid-gap: 1pc;
+            button {
+                padding: 0.75pc;
+                width: 100%;
             }
         }
     }
@@ -83,28 +76,18 @@
         top: 50%;
         left: 49%;
         transform: translate(-50%,-50%);
-        height: 17%;
-        width: 60%;
-        margin: 1pc;
-        padding: 1pc;
+        padding: 2pc;
 
         .confirm_text {
-            margin: 1pc 1pc;
-            font-size: 1.5pc;
+            margin-top: 0pc;
+            font-size: 1.4pc;
         }
 
-        button {
-            border: 0pc;
-            border-radius: 0.4pc;
-            padding: 0.5pc;
-            margin: 0pc 0.7pc;
-            height: 35%;
-            width: 40%;
-            img {
-                max-width: 35%;
-            }
-            .button_text {
-                margin: 0pc;
+        .button_section{
+            grid-gap: 1pc;
+            button {
+                padding: 0.75pc;
+                width: 100%;
             }
         }
     }
