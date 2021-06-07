@@ -12,34 +12,6 @@ const Card = (props) => {
     const upRef = useRef(null);
     const downRef = useRef(null);
 
-    // const addColorToVoted = () => {
-    //     //console.log(`addColorToVoted`);
-    //     dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
-    //         var voteDir = 0;
-    //         var uidInVotes = false;
-    //         for(var i=0; i<snapshot.docs.length; i++){
-    //             if(snapshot.docs[i].id === user.uid){
-    //                 uidInVotes = true; 
-    //                 voteDir = snapshot.docs[i].data().voteDirection;
-    //                 //console.log(`addColorToVoted\n props.post_id:${props.post_id} | voteDir:${voteDir} | uidInVotes:${uidInVotes} | user.uid:${user.uid}\n`);
-    //                 break;
-    //             }
-    //         }
-    //         if(uidInVotes){
-    //             if(voteDir === 1){
-    //                 upRef.current.style.backgroundColor = "#fe2b5d";
-    //             }
-    //             else if(voteDir === -1){
-    //                 downRef.current.style.backgroundColor = "#fe2b5d";
-    //             }
-    //         }
-    //         else if(voteDir === 0){
-    //             upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
-    //             downRef.current.style.backgroundColor = "rgb(45, 45, 45)";
-    //         }
-    //     });
-    // }
-
     const addColorToVoted = useCallback(() => {
         //console.log(`addColorToVoted`);
         dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
@@ -115,39 +87,10 @@ const Card = (props) => {
     }
 
     const showConfirmation = () => {
-        //console.log(`showConfirmation\nshowConf: ${showConf} | props.post_id: ${props.post_id}`);
-        document.querySelector(".confirm").style.display = "flex";
         setPostID(props.post_id)
         setShowConf(true);
     }
 
-    //make date in DD/MM/YYYY HH:MM AM/PM format
-    // const utcToTime = (utc) => {
-    //     var dateobj, formattedTime, date, month, year, hours, minutes;
-    //     if(utc.toString().length == 10){
-    //         dateobj = new Date(0);
-    //         dateobj.setUTCSeconds(utc);
-    //         date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
-    //         month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
-    //         year = dateobj.getFullYear();
-    //         hours = dateobj.getHours();
-    //         minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
-    //         formattedTime = dateobj.toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
-    //     }
-    //     else if(utc.toString().length == 13){
-    //         dateobj = new Date(10);
-    //         dateobj.setUTCSeconds(utc);
-    //         date = (dateobj.getDate() > 9)? ("" + dateobj.getDate()): ("0" + dateobj.getDate());
-    //         month = (dateobj.getMonth() > 9)? ("" + dateobj.getMonth()): ("0" + dateobj.getMonth());
-    //         year = dateobj.getFullYear();
-    //         hours = dateobj.getHours();
-    //         minutes = (dateobj.getMinutes() > 9)? ("" + dateobj.getMinutes()): ("0" + dateobj.getMinutes());
-    //         formattedTime = new Date(utc).toLocaleDateString("en-IN") + ' ' + hours + ':' + minutes;
-    //     }
-    //     // formattedTime = date + '/' + month + '/' + year + ' ' +hours + ':' +minutes;
-    //     // console.log(`utcToTime:\n${utc}\n${date}/${month}/${year} - ${hours}:${minutes}\n`);
-    //     return formattedTime;
-    // }
     const timeDifference = (utc) => {
         var msPerMinute = 60 * 1000;
         var msPerHour = msPerMinute * 60;
