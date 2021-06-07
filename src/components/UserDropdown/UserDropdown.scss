@@ -32,16 +32,13 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .userdrop {
-        padding: 0.5pc;
         top: 7pc;
         transform: translateX(94%);
     }
     .menu_item {
         grid-gap: 1pc;
         margin: 0pc;
-        padding: 0.5pc;
-        padding-left: 0pc;
-        padding-right: 1pc;
+        padding: 1pc;
         font-size: 1pc;
         .icon_img{
             width: 2pc;
@@ -52,16 +49,15 @@
 //Mobile
 @media only screen and (max-width: 600px) {
     .userdrop {
-        padding: 0.5pc;
         top: 7pc;
         transform: translateX(130%);
     }
     .menu_item {
         grid-gap: 1pc;
         margin: 0pc;
-        padding: 0.5pc;
-        padding-left: 0pc;
-        padding-right: 1pc;
+        padding: 1pc;
+        padding-left: 0.5pc;
+        padding-right: 1.5pc;
         font-size: 0.8pc;
         .icon_img{
             width: 2pc;
