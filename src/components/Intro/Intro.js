@@ -1,11 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../../providers/UserProvider';
+import UserDropdown from '../UserDropdown/UserDropdown';
 import './Intro.scss';
 
 const Intro = () => {
     const history = useHistory();
     const user = useContext(UserContext);
+	const [openState, setOpenState] = useState(false);
 	const [photoURL, setPhotoURL] = useState("https://img.icons8.com/ios/30/000000/user-male-circle.png");
 
     useEffect(() => {
@@ -30,10 +32,12 @@ const Intro = () => {
                 <div className="intro_head">
                     <img className="logo_img" src='./images/brainfart.png' alt="myFace"/>
                     <h1 className="title" >brainFart</h1>
-                    <img className="personal_img" src={photoURL} alt="myFace" onClick={() => history.push('/user')}/>
+                    {/* <img className="personal_img" src={photoURL} alt="myFace" onClick={() => history.push('/user')}/> */}
+                    <img className="personal_img" src={photoURL} alt="myFace" onClick={() => setOpenState(!openState)}/>
+                    {openState && <UserDropdown />}
                 </div>
-                <h2>share ideas!</h2>
-                <p>by<a href="https://nikhil-nair.web.app/">Nikhil Nair</a></p>
+                <h2 className="under_text">AI generated ideas from OpenAI's GPT2 and GPT3.</h2>
+                <p className="under_text">by<a className="under_text" href="https://nikhil-nair.web.app/">Nikhil Nair</a></p>
             </div>
         </div>
     );

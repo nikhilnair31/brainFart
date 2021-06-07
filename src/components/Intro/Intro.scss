@@ -7,8 +7,8 @@
         position: relative;
 
         .intro_head{
-            display: grid;
-            justify-items: center;
+            display: flex;
+            align-items: center;
 
             .title{
                 margin: 0pc;
@@ -27,7 +27,7 @@
             }
         }
 
-        h2, p, a {
+        .under_text {
             padding: 0.5pc;
             @include themed('color', 'text');
             @include all_transition_durations;
@@ -41,9 +41,9 @@
         padding-top: 1pc;
         text-align: center;
         .intro_head{
-            grid-template-columns: auto auto auto;
-            margin: 1pc 25pc;
-            grid-gap: 0pc;
+            justify-content: center;
+            padding: 1pc;
+            grid-gap: 6pc;
         }
         .title {
             padding: 0.5pc;
@@ -61,11 +61,11 @@
             background-color: white;
         }
     }
-    h2 {
+    h2.under_text {
         margin: auto 1pc;
-        font-size: 2pc;
+        font-size: 1pc;
     }
-    p, a {
+    p.under_text , a.under_text {
         margin: auto 1pc;
         font-size: 1pc;
     }
@@ -77,9 +77,9 @@
         padding-top: 1pc;
         text-align: left;
         .intro_head{
-            grid-template-columns: auto auto;
-            margin: 1pc 0pc;
-            grid-gap: 7pc;
+            justify-content: space-between;
+            padding: 1pc 0.5pc;
+            grid-gap: 5pc;
         }
         .title {
             padding-top: 0.5pc;
@@ -97,11 +97,11 @@
             width: 3pc;
         }
     }
-    h2 {
+    h2.under_text {
         margin: auto 0pc;
         font-size: 1pc;
     }
-    p, a {
+    p.under_text , a.under_text {
         margin: auto 0pc;
         font-size: 0.5pc;
     }

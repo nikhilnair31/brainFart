@@ -1,0 +1,70 @@
+@import "../../color-themes";
+
+.userdrop {
+    position: absolute;
+    border: 0pc;
+    border-radius: 0.3pc;
+    overflow: hidden;
+    z-index: 15;
+    @include themed('background-color', 'card');
+}
+
+.menu_item {
+    display: flex;
+    align-items: center;
+    border-radius: 0.3pc;
+    text-decoration: none;
+    @include themed('color', 'text');
+    @include all_transition_durations;
+    &:last-of-type {
+        align-items: center;
+        justify-content: center;
+        @include themed('background-color', 'accentplus');
+    }
+    &:hover{
+        @include themed('background-color', 'inputfield');
+    }
+    .icon_img{
+        width: 2pc;
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .userdrop {
+        padding: 0.5pc;
+        top: 7pc;
+        transform: translateX(94%);
+    }
+    .menu_item {
+        grid-gap: 1pc;
+        margin: 0pc;
+        padding: 0.5pc;
+        padding-left: 0pc;
+        padding-right: 1pc;
+        font-size: 1pc;
+        .icon_img{
+            width: 2pc;
+        }
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .userdrop {
+        padding: 0.5pc;
+        top: 7pc;
+        transform: translateX(130%);
+    }
+    .menu_item {
+        grid-gap: 1pc;
+        margin: 0pc;
+        padding: 0.5pc;
+        padding-left: 0pc;
+        padding-right: 1pc;
+        font-size: 0.8pc;
+        .icon_img{
+            width: 2pc;
+        }
+    }
+}

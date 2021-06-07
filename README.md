@@ -2,7 +2,7 @@
 * General
     - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
-    - [ ] Center brainFart text
+        - [x] Center brainFart text
     - [ ] Have footer stay at botom of page even while searching
         - [x] Added delete confirmation component
         - [x] Add site logo

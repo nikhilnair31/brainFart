@@ -17,10 +17,16 @@
     .search_input {
         padding: 0.5pc;
         border: 0pc;
-        width: 30pc;
+        width: 26pc;
         height: 2pc;
-        border-radius: 0pc 0.7pc 0.7pc 0pc;
         @include themed('color', 'inputtext');
+        @include themed('background-color', 'inputfield');
+    }
+
+    .filter_img {
+        padding-right: 0.5pc;
+        width: 3pc;
+        border-radius: 0pc 0.7pc 0.7pc 0pc;
         @include themed('background-color', 'inputfield');
     }
 }
