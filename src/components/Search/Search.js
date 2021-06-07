@@ -3,7 +3,7 @@ import './Search.scss';
 
 const Search = (props) => {
     const handleSearchInputChange = event => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         props.setSearchedIdea(event.target.value);
     }
 
