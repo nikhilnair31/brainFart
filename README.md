@@ -2,7 +2,8 @@
 * General
     - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
-    - [ ] Have dlete confirm show up as popup instead of full screen
+    - [ ] Fix logout popup to user's image for responsive
+    - [ ] Have delete confirm show up as popup instead of full screen
     - [ ] Have footer stay at botom of page even while searching
         - [x] Center brainFart text
         - [x] Added delete confirmation component
