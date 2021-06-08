@@ -3,6 +3,7 @@
     - [ ] Figure out how to avoid seeing login page on consecutive loads
 * Home page
     - [ ] Have delete confirm show up as popup instead of full screen
+    - [ ] Show highest voted idea for day? on top of older ideas with quick up/downvotes with keys
     - [ ] Have footer stay at botom of page even while searching
         - [x] Fix logout popup to user's image for responsive
         - [x] Center brainFart text

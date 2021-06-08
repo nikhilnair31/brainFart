@@ -1,28 +1,39 @@
-import React, {useState} from 'react';
-import UserProvider from '../../providers/UserProvider';
-import ConfirmProvider from '../../providers/ConfirmProvider';
+import React, { useState, useContext, useEffect } from 'react';
+import Spinner from '../Spinner/Spinner';
 import LogIn from '../LogIn/LogIn';
 import Home from '../Home/Home';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { UserContext } from '../../providers/UserProvider';
 import './App.scss';
 
-
 const App = () => {
+	const user = useContext(UserContext)
+    const [timePassed, setTimePassed] = useState(false);
     const [posted, setPosted] = useState(0);
 	document.getElementById("root").classList.add('theme-dark');
 
-	return(
-		<Router>
-			<Switch>
-				<UserProvider>
-        			<ConfirmProvider>
-						<Route path="/" exact component={() => <LogIn />} />
-						<Route path="/home" exact component={() => <Home postedObj={{posted, setPosted}}/>} />
-        			</ConfirmProvider>
-				</UserProvider>
-			</Switch>
-		</Router>
-	);
+    useEffect(() => {
+		setTimeout( () => { setTimePassed(true); }, 1000);
+        if (user !== null) console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
+    }, [user])
+
+	// return <Spinner/>;
+	if (!timePassed) {
+        return <Spinner/>;
+    } 
+	else {
+        if ((user === null)) {
+			return(
+				<LogIn />
+			);
+		}
+		else{
+			return(
+				<div>
+					<Home postedObj={{posted, setPosted}} />
+				</div>
+			);
+		}
+    }
 }
 
 export default App;

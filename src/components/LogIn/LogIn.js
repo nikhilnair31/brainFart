@@ -1,19 +1,16 @@
 import React, {useContext, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 import './LogIn.scss';
 import { auth, googleProvider, twitterProvider } from "../../helpers/firebase";
 import { UserContext } from '../../providers/UserProvider';
 
 const LogIn = () => {
     const user = useContext(UserContext)
-    const history = useHistory();
 
     useEffect(() => {
         if (user !== null) {
             console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
-            history.push('/home');
         }
-    }, [user, history])
+    }, [user])
 
     const signInWithGoogle = () => {
         auth.signInWithPopup(googleProvider).then((res) => {

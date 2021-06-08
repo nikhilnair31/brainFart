@@ -2,11 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './components/App/App';
+import UserProvider from './providers/UserProvider';
+import ConfirmProvider from './providers/ConfirmProvider';
 import reportWebVitals from './helpers/reportWebVitals';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<UserProvider>
+			<ConfirmProvider>
+				<App />
+			</ConfirmProvider>
+		</UserProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

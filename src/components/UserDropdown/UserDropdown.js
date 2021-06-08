@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState }  from 'react';
+import React, {}  from 'react';
 import { useHistory } from "react-router-dom";
 import { auth } from "../../helpers/firebase";
 import './UserDropdown.scss';
@@ -29,7 +29,7 @@ const UserDropdown = () => {
         <div className="userdrop">
             <DropdownItem leftIcon="./images/about_icon.png" newtab='' link="#">About</DropdownItem>
             <DropdownItem leftIcon="./images/privacy_icon.png" newtab='_blank' link="https://docs.google.com/document/d/14Q2jeHABjQZgS-B4zeXYWJ7g1-WPgBSSEIqeVNpG414/edit?usp=sharing">Privacy Policy</DropdownItem>
-            <a href="#" className="menu_item" onClick={logOut}>Signout</a>
+            <p className="menu_item" onClick={logOut}>Signout</p>
         </div>
     );
 }

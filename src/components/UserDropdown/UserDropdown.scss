@@ -16,17 +16,24 @@
     text-decoration: none;
     @include themed('color', 'text');
     @include all_transition_durations;
-    &:last-of-type {
-        align-items: center;
-        justify-content: center;
-        @include themed('background-color', 'accentplus');
-    }
     &:hover{
         @include themed('background-color', 'inputfield');
     }
     .icon_img{
         width: 2pc;
     }
+}
+
+p.menu_item {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 0.3pc;
+    text-decoration: none;
+    @include themed('color', 'text');
+    @include themed('background-color', 'accentplus');
+    @include all_transition_durations;
 }
 
 //Desktop
