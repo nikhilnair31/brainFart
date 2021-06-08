@@ -12,6 +12,7 @@
 
             .title{
                 margin: 0pc;
+                font-weight: bold;
                 @include themed('color', 'text');
                 @include all_transition_durations;
             }
@@ -29,6 +30,7 @@
 
         .under_text {
             padding: 0.5pc;
+            font-weight: 100;
             @include themed('color', 'text');
             @include all_transition_durations;
         }
@@ -98,7 +100,7 @@
     }
     h2.under_text {
         margin: auto 0pc;
-        font-size: 1pc;
+        font-size: 0.8pc;
     }
     p.under_text , a.under_text {
         margin: auto 0pc;

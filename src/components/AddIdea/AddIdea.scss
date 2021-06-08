@@ -35,6 +35,7 @@
             width: 100%;
             height: 3pc;
             cursor: pointer;
+            font-weight: 500;
             border-radius: 0pc 0pc 0.7pc 0.7pc;
             animation: fade $transition_duration;
             @include themed('background-color', 'accent');

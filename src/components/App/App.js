@@ -12,7 +12,7 @@ const App = () => {
 	document.getElementById("root").classList.add('theme-dark');
 
     useEffect(() => {
-		setTimeout( () => { setTimePassed(true); }, 1000);
+		setTimeout( () => { setTimePassed(true); }, 1500);
         if (user !== null) console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
     }, [user])
 
@@ -28,7 +28,7 @@ const App = () => {
 		}
 		else{
 			return(
-				<div>
+				<div className="root_in">
 					<Home postedObj={{posted, setPosted}} />
 				</div>
 			);

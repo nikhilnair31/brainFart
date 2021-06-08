@@ -54,8 +54,8 @@ const AddIdea = () =>{
 			<div className="addIdea_container">
                 <div className="addIdea">
                     {/* <input className="idea_input" type="textarea" placeholder="Add an idea" onChange={handleIdeaChange} onKeyDown={handleKeyDown} /> */}
-                    <textarea className="idea_input" type="textarea" placeholder="Add an idea" onChange={handleIdeaChange} onKeyDown={handleKeyDown} />
-                    <button className="postIdea" type="submit" alt="Submit" onClick={handleSubmit}>Post</button>
+                    <textarea className="idea_input" type="textarea" placeholder="add an idea" onChange={handleIdeaChange} onKeyDown={handleKeyDown} />
+                    <button className="postIdea" type="submit" alt="Submit" onClick={handleSubmit}>post</button>
                 </div>
                 <ToastContainer progressClassName="toastProgress" bodyClassName="toastBody" />
             </div>
