@@ -25,15 +25,20 @@
 }
 
 p.menu_item {
+    cursor: pointer;
     align-items: center;
     justify-content: center;
     display: flex;
     align-items: center;
     border-radius: 0.3pc;
     text-decoration: none;
-    @include themed('color', 'text');
-    @include themed('background-color', 'accentplus');
+    font-weight: bold;
+    @include themed('color', 'alttext');
+    @include themed('background-color', 'accent');
     @include all_transition_durations;
+    &:hover{
+        @include themed('background-color', 'accentplus');
+    }
 }
 
 //Desktop

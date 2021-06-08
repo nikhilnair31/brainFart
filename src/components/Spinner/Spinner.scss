@@ -2,11 +2,18 @@
 
 .spinner_container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
     z-index: 10;
+
+    .title {
+        margin: 3pc;
+        font-size: 3pc;
+        @include themed('color', 'text');
+    }
 
     .spinner {
         width: 3pc;
@@ -29,5 +36,19 @@
         to {
             transform: rotate(360deg);
         }
+    }
+}
+
+//Desktop
+@media only screen and (min-width: 600px) {
+    .logo_img {
+        width: 5%;
+    }
+}
+
+//Mobile
+@media only screen and (max-width: 600px) {
+    .logo_img {
+        width: 25%;
     }
 }
