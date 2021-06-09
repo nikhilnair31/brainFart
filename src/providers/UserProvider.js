@@ -8,7 +8,7 @@ const UserProvider = (props) => {
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
-			console.log(`USERPROVIDER\n user: ${JSON.stringify(user)}\n`);
+			// console.log(`USERPROVIDER\n user: ${JSON.stringify(user)}\n`);
             if(user !== null){
                 const { uid, displayName, email, photoURL, isAnonymous }  = user;
                 setUser({ uid, displayName, email, photoURL, isAnonymous })

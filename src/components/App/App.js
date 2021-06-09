@@ -8,29 +8,27 @@ import './App.scss';
 const App = () => {
 	const user = useContext(UserContext)
     const [timePassed, setTimePassed] = useState(false);
-    const [posted, setPosted] = useState(0);
+
+	//Adds dark theme to root id element and all its children
 	document.getElementById("root").classList.add('theme-dark');
 
     useEffect(() => {
+        if (user !== null) console.log(`LOGIN\n loggedIn true.\n`);
 		setTimeout( () => { setTimePassed(true); }, 1500);
-        if (user !== null) console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
     }, [user])
 
-	// return <Spinner/>;
 	if (!timePassed) {
         return <Spinner/>;
     } 
 	else {
-        if ((user === null)) {
+        if (user === null) {
 			return(
 				<LogIn />
 			);
 		}
 		else{
 			return(
-				<div className="root_in">
-					<Home postedObj={{posted, setPosted}} />
-				</div>
+				<Home />
 			);
 		}
     }

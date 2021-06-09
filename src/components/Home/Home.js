@@ -17,6 +17,9 @@ const Home = (props) => {
     const [posts, setPosts] = useState([]);
     const {conf, pid} = useContext(ConfirmContext);
     const [showConf, setShowConf] = conf;
+    const [randIdea, setRandIdea] = useState(null);
+    const [isCancelled, setIsCancelled] = useState(false);
+    const [gotRandIdea, setGotRandIdea] = useState(false);
 
     const filteredPosts = posts.filter(idea => {
         return idea.post.idea.toLowerCase().includes(searchedIdea.toLowerCase()) || 
@@ -25,25 +28,48 @@ const Home = (props) => {
     });
 
     useEffect(() => { 
-        //console.log(`useEffect filteredPosts.length: ${filteredPosts.length}`);
-        if(filteredPosts.length <= 0){
-            footRef.current.style.position = "absolute";
-        } 
-        else{
-            footRef.current.style.position = "relative";
-        }
+        //console.log(`randIdea: ${JSON.stringify(randIdea)}`);
+        // console.log(`posts: ${(posts)}`);
+        // console.log(`filteredPosts: ${filteredPosts}`);
+        // console.log(`searchedIdea: ${JSON.stringify(searchedIdea)}`);
+        // console.log(`isCancelled: ${isCancelled}`);
 
-        let isCancelled = false;
+        // if(!gotRandIdea && filteredPosts.length>0){
+        //     var ideaIndex = Math.floor(Math.random() * posts.length);
+        //     setRandIdea(posts[ideaIndex]);
+        //     setGotRandIdea(true);
+        //     //console.log(`randIdea: ${posts[ideaIndex]}`);
+        // }
+
+        if(filteredPosts.length <= 0)
+            footRef.current.style.position = "absolute";
+        else
+            footRef.current.style.position = "relative";
+
+        // console.log(`posts: ${(posts)}`);
+        // console.log(`filteredPosts: ${filteredPosts}`);
+        // console.log(`filteredPosts: ${searchedIdea}`);
+        // console.log(`isCancelled: ${isCancelled}`);
         dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
             if (!isCancelled) {
+                setIsCancelled(true);
                 setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
+                console.log(`setPosts isCancelled: ${isCancelled}`);
             }
         });
-        return () => {
-            isCancelled = true;
-        };
     }, [filteredPosts]);
     
+    // function CardContainer(props) {
+    //     return (
+    //         <div className="page_container" id="Dashboard">
+    //             <h3 className="page_title">{props.heading_text}</h3>
+    //             <div className="grid_container">
+    //                 {props.children}
+    //             </div>
+    //         </div>
+    //     );
+    // }
+
     function Empty(props) {
         return (
             <div className="empty_item">
@@ -56,22 +82,29 @@ const Home = (props) => {
         <div id="root_child">
             {showConf && <Confirm />}
             <Intro />
-            <Search searchedIdea={searchedIdea} setSearchedIdea={setSearchedIdea} />
-            <AddIdea posted={props.postedObj.posted} setPosted={props.postedObj.setPosted}/>
-            {(filteredPosts.length > 0) && <CardContainer>
+            <Search setSearchedIdea={setSearchedIdea} />
+            <AddIdea />
+            {
+                (randIdea !== null) && 
+                <CardContainer heading_text='Random Idea'>
+                    <Card key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} />
+                </CardContainer>
+            }
+            {
+                (filteredPosts.length > 0) && 
+                <CardContainer heading_text='Past Ideas'>
                 {   
                     filteredPosts.map(({id, post}) => (
                         <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} post_idea_tag={post.tag} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
                     ))
                 }
                 </CardContainer>}
-            {(filteredPosts.length <= 0) && 
-                <div className="page_container" id="Dashboard">
-                    <h3 className="page_title">...</h3>
-                    <div className="grid_container">
-                        <Empty text="nothing to see here 🤷"/>
-                    </div>
-                </div>}
+            {
+                (filteredPosts.length <= 0) && 
+                <CardContainer heading_text=''>
+                    <Empty text="nothing to see here 🤷"/>
+                </CardContainer>
+            }
             <Footer refe={footRef}/>
             <ScrollToTop />
         </div>
