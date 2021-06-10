@@ -1,11 +1,13 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext, useEffect, useRef } from "react";
 import { dbref } from '../../helpers/firebase.js';
 import { UserContext } from '../../providers/UserProvider';
 import { ToastContainer, toast } from 'react-toastify';
+import autosize from 'autosize';
 import 'react-toastify/dist/ReactToastify.css';
 import './AddIdea.scss';
 
 const AddIdea = () =>{
+    const textareaRef  = useRef(null);
     const user = useContext(UserContext);
     const [idea, setIdea] = useState('');
     const [uid, setUID] = useState('');
@@ -26,7 +28,12 @@ const AddIdea = () =>{
         }
     }, [user]);
 
-    const handleIdeaChange = event => { setIdea(event.target.value); };
+    const handleIdeaChange = event => { 
+        setIdea(event.target.value); 
+        var textarea = document.querySelector(".idea_input");
+        textarea.focus();
+        autosize(textarea);
+    };
     
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -48,7 +55,6 @@ const AddIdea = () =>{
         }
     };
 
-    
     if (showPosting) {
 		return( 
 			<div className="addIdea_container">

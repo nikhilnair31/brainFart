@@ -2,9 +2,8 @@
 * General
         - [x] Figure out how to avoid seeing login page on consecutive loads
 * Home page
-    - [ ] Have delete confirm show up as popup instead of full screen
-    - [ ] Fix data flow to avoid refetching full collection's data on up/downvoting
-    - [ ] Show random idea on top of older ideas with quick up/downvotes with keys
+        - [x] Show random idea on top of older ideas with quick up/downvotes
+        - [x] Fix data flow to avoid refetching full collection's data on up/downvoting
         - [x Have footer stay at botom of page even while searching
         - [x] Fix logout popup to user's image for responsive
         - [x] Center brainFart text
@@ -22,12 +21,12 @@
 * Search
     - [ ] Add customizable filter to sort ideas
 * AddIdea
-    - [ ] Have textarea height increase automatically
+        - [x] Have textarea height increase automatically
         - [x] Have inputtext element height increase for long texts
         - [x] Check why user context here shows null even though it prints in other scripts
         - [x] Add conditional render if user.isAnon is true
 * Idea card
-    - [ ] Fix error where one can upvote infinitely by upvoting then downvoting and undownvoting
+        - [x] Fix error where one can upvote infinitely by upvoting then downvoting and undownvoting
         - [x] Save upvote or downvote to show as changed button color from load
         - [x] Add functionality to up/down vote buttons considering 1 user can only submit 1 up/down vote for an idea to avoid spamming.
         - [x] Figure out how to update upvote on only 1 idea and not pull full database to avoid re-render of whole list
