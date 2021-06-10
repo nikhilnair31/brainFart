@@ -7,7 +7,7 @@ const Search = (props) => {
 	const [openState, setOpenState] = useState(false);
 
     useEffect(() => {
-        console.log('useEffect');
+        //console.log('useEffect');
         const onScroll = e => {
           console.log('onScroll');
         };
@@ -22,7 +22,7 @@ const Search = (props) => {
         <div className="search">
             <img className="search_img" src='.\images\search_icon2.png' alt="search icon"/>
             <input className="search_input" type="text" placeholder="Search IdeaHub" onChange={handleSearchInputChange}/>
-            <img className="filter_img" src='.\images\filter_icon.png' alt="filter icon" onClick={() => setOpenState(!openState)}/>
+            <img className="filter_img" src='.\images\filter_icon2.png' alt="filter icon" onClick={() => setOpenState(!openState)}/>
             {openState && <FilterDropdown fullfiltpost={props.fullfiltpost}/>}
         </div>
     );
