@@ -28,47 +28,28 @@ const Home = (props) => {
     });
 
     useEffect(() => { 
-        //console.log(`randIdea: ${JSON.stringify(randIdea)}`);
-        // console.log(`posts: ${(posts)}`);
-        // console.log(`filteredPosts: ${filteredPosts}`);
-        // console.log(`searchedIdea: ${JSON.stringify(searchedIdea)}`);
-        // console.log(`isCancelled: ${isCancelled}`);
-
-        // if(!gotRandIdea && filteredPosts.length>0){
-        //     var ideaIndex = Math.floor(Math.random() * posts.length);
-        //     setRandIdea(posts[ideaIndex]);
-        //     setGotRandIdea(true);
-        //     //console.log(`randIdea: ${posts[ideaIndex]}`);
-        // }
+        if(!gotRandIdea && filteredPosts.length > 0){
+            var ideaIndex = Math.floor(Math.random() * posts.length);
+            setRandIdea(posts[ideaIndex]);
+            setGotRandIdea(true);
+            //console.log(`randIdea: ${posts[ideaIndex]}`);
+        }
 
         if(filteredPosts.length <= 0)
             footRef.current.style.position = "absolute";
         else
             footRef.current.style.position = "relative";
 
-        // console.log(`posts: ${(posts)}`);
-        // console.log(`filteredPosts: ${filteredPosts}`);
-        // console.log(`filteredPosts: ${searchedIdea}`);
-        // console.log(`isCancelled: ${isCancelled}`);
+        //changing onsnapshot to getfetch avoids retrieveing full data on up/down voting
         dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
             if (!isCancelled) {
                 setIsCancelled(true);
                 setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
-                console.log(`setPosts isCancelled: ${isCancelled}`);
+                //console.log(`setPosts isCancelled: ${isCancelled}`);
             }
         });
+
     }, [filteredPosts]);
-    
-    // function CardContainer(props) {
-    //     return (
-    //         <div className="page_container" id="Dashboard">
-    //             <h3 className="page_title">{props.heading_text}</h3>
-    //             <div className="grid_container">
-    //                 {props.children}
-    //             </div>
-    //         </div>
-    //     );
-    // }
 
     function Empty(props) {
         return (
