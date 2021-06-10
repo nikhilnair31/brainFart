@@ -4,6 +4,7 @@ import Search from '../Search/Search';
 import AddIdea from '../AddIdea/AddIdea';
 import CardContainer from '../CardContainer/CardContainer';
 import Card from '../CardContainer/Card/Card.js';
+import RandCard from '../CardContainer/Card/RandCard.js';
 import Footer from '../Footer/Footer';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 import Confirm from '../Confirm/Confirm';
@@ -49,7 +50,7 @@ const Home = (props) => {
             }
         });
 
-    }, [filteredPosts]);
+    }, [gotRandIdea, filteredPosts]);
 
     function Empty(props) {
         return (
@@ -68,7 +69,7 @@ const Home = (props) => {
             {
                 (randIdea !== null) && 
                 <CardContainer heading_text='Random Idea'>
-                    <Card key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} />
+                    <RandCard key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} setGotRandIdea={setGotRandIdea} />
                 </CardContainer>
             }
             {
