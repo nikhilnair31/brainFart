@@ -1,30 +1,32 @@
 @import "../../color-themes";
 
-.userdrop {
+.filterdrop {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    border: 0pc;
     border-radius: 0.3pc;
-    overflow: hidden;
-    z-index: 20;
+    z-index: 15;
     @include themed('background-color', 'card');
 }
 
-.menu_item {
+.filt_menu_title{
+    @include themed('color', 'alttext');
+    @include themed('background-color', 'accent');
+    @include all_transition_durations;
+}
+
+.filt_menu_item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     border-radius: 0.3pc;
     text-decoration: none;
     @include themed('color', 'text');
     @include all_transition_durations;
-    &:hover{
-        @include themed('background-color', 'inputfield');
-    }
-    .icon_img{
-        width: 2pc;
-    }
 }
 
-p.menu_item {
+p.filt_menu_item {
+    margin: 0pc;
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -43,36 +45,40 @@ p.menu_item {
 
 //Desktop
 @media only screen and (min-width: 600px) {
-    .userdrop {
-        top: 7pc;
-        transform: translateX(94%);
+    .filterdrop {
+        top: 4pc;
+        transform: translateX(230%);
     }
-    .menu_item {
+    .filt_menu_title{
         grid-gap: 1pc;
         margin: 0pc;
         padding: 1pc;
         font-size: 1pc;
-        .icon_img{
-            width: 2pc;
-        }
+    }
+    .filt_menu_item {
+        grid-gap: 1pc;
+        //padding-left: 1pc;
+        font-size: 1pc;
     }
 }
 
 //Mobile
 @media only screen and (max-width: 600px) {
-    .userdrop {
-        top: 5pc;
-        right: 0pc;
+    .filterdrop {
+        top: 4pc;
+        right: 0.9pc;
     }
-    .menu_item {
-        grid-gap: 1pc;
+    .filt_menu_title{
         margin: 0pc;
         padding: 1pc;
-        padding-left: 0.5pc;
-        padding-right: 1.5pc;
         font-size: 0.8pc;
-        .icon_img{
-            width: 2pc;
-        }
+    }
+    .filt_menu_item {
+        grid-gap: 1pc;
+        //margin: 0pc;
+        //padding: 1pc;
+        //padding-left: 1pc;
+        //padding-right: 1.5pc;
+        font-size: 0.8pc;
     }
 }

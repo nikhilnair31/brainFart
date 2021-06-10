@@ -1,11 +1,8 @@
 import React, {}  from 'react';
-//import { useHistory } from "react-router-dom";
 import { auth } from "../../helpers/firebase";
 import './UserDropdown.scss';
 
 const UserDropdown = () => {
-    //const history = useHistory();
-
     const logOut = () => {
         auth.signOut().then(()=> {
             console.log(`USER res\n auth: ${JSON.stringify(auth)}\n `);

@@ -49,7 +49,7 @@ const Home = (props) => {
                 //console.log(`setPosts isCancelled: ${isCancelled}`);
             }
         });
-
+        
     }, [gotRandIdea, filteredPosts]);
 
     function Empty(props) {
@@ -64,17 +64,17 @@ const Home = (props) => {
         <div id="root_child">
             {showConf && <Confirm />}
             <Intro />
-            <Search setSearchedIdea={setSearchedIdea} />
+            <Search setSearchedIdea={setSearchedIdea} fullfiltpost={filteredPosts} />
             <AddIdea />
             {
-                (randIdea !== null) && 
-                <CardContainer heading_text='Random Idea'>
+                (randIdea !== null) && (searchedIdea.length <= 0) &&
+                <CardContainer heading_text='Random Idea' cardcont_id='randcont'>
                     <RandCard key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} setGotRandIdea={setGotRandIdea} />
                 </CardContainer>
             }
             {
                 (filteredPosts.length > 0) && 
-                <CardContainer heading_text='Past Ideas'>
+                <CardContainer heading_text='Past Ideas' cardcont_id='pastcont'>
                 {   
                     filteredPosts.map(({id, post}) => (
                         <Card key={id} post_id={id} post_utc={post.utc} post_idea_text={post.idea} post_idea_tag={post.tag} op_uid={post.uid} op_displayName={post.displayName} post_upvotes={post.upvotes} />
@@ -83,7 +83,7 @@ const Home = (props) => {
                 </CardContainer>}
             {
                 (filteredPosts.length <= 0) && 
-                <CardContainer heading_text=''>
+                <CardContainer heading_text='' cardcont_id='emptycont'>
                     <Empty text="nothing to see here 🤷"/>
                 </CardContainer>
             }

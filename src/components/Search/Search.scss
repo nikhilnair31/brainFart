@@ -2,10 +2,11 @@
 
 .search {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
     padding: 1pc;
-    z-index: 0;
+    z-index: 15;
 
     .search_img {
         width: 3pc;
@@ -16,7 +17,7 @@
     .search_input {
         padding: 0.5pc;
         border: 0pc;
-        width: 26pc;
+        width: 27pc;
         height: 2pc;
         @include themed('color', 'inputtext');
         @include themed('background-color', 'inputfield');
