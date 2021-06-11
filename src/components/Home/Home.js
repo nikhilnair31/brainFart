@@ -21,6 +21,12 @@ const Home = (props) => {
     const [randIdea, setRandIdea] = useState(null);
     const [isCancelled, setIsCancelled] = useState(false);
     const [gotRandIdea, setGotRandIdea] = useState(false);
+	const [tagList, setTagList] = useState(['games', 'apps', 'startup']);
+	const [tagStatusList, setTagStatusList] = useState([true, true, true]);
+    
+    // const taggyPosts = posts.filter(idea => {
+    //     return tagList.some(el => idea.post.tag.includes(el));
+    // });
 
     const filteredPosts = posts.filter(idea => {
         return idea.post.idea.toLowerCase().includes(searchedIdea.toLowerCase()) || 
@@ -33,7 +39,6 @@ const Home = (props) => {
             var ideaIndex = Math.floor(Math.random() * posts.length);
             setRandIdea(posts[ideaIndex]);
             setGotRandIdea(true);
-            //console.log(`randIdea: ${posts[ideaIndex]}`);
         }
 
         if(filteredPosts.length <= 0)
@@ -41,12 +46,11 @@ const Home = (props) => {
         else
             footRef.current.style.position = "relative";
 
-        //changing onsnapshot to getfetch avoids retrieveing full data on up/down voting
+        //changing onsnapshot to getfetch avoids retrieveing full data on up/down voting..collection("posts")
         dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
             if (!isCancelled) {
                 setIsCancelled(true);
                 setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );
-                //console.log(`setPosts isCancelled: ${isCancelled}`);
             }
         });
         
@@ -64,7 +68,7 @@ const Home = (props) => {
         <div id="root_child">
             {showConf && <Confirm />}
             <Intro />
-            <Search setSearchedIdea={setSearchedIdea} fullfiltpost={filteredPosts} />
+            <Search setSearchedIdea={setSearchedIdea} fullfiltpost={filteredPosts} tagList={tagList} setTagList={setTagList} tagStatusList={tagStatusList} setTagStatusList={setTagStatusList}/>
             <AddIdea />
             {
                 (randIdea !== null) && (searchedIdea.length <= 0) &&

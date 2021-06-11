@@ -128,7 +128,7 @@
         }
         .button_section {
             grid-gap: 3pc;
-            height: 5vh;
+            min-height: 5vh;
         }
     }
 }
@@ -149,7 +149,7 @@
         }
         .button_section {
             grid-gap: 1.25pc;
-            height: 5vh;
+            min-height: 5vh;
         }
     }
 }

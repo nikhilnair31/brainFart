@@ -2,16 +2,29 @@ import React, { useEffect, useState }  from 'react';
 import './FilterDropdown.scss';
 
 const FilterDropdown = (props) => {
-	const [tagList, setTagList] = useState([]);
 
-    useEffect(() => {
-        var allTags = props.fullfiltpost.map(function(o){return o.post.tag}).filter(function(v,i,a) {
-            return a.indexOf(v)===i
-        });
-        allTags = allTags.slice(0, -1);
-        setTagList(allTags);
-        console.log('allTags: ', allTags);
-    }, []);
+    // useEffect(() => {
+    //     var allTags = props.fullfiltpost.map(function(o){return o.post.tag}).filter(function(v,i,a) {
+    //         return a.indexOf(v)===i
+    //     });
+    //     props.setTagList(allTags);
+    //     console.log('allTags: ', allTags);
+    // }, []);
+
+    // const checkChanged = (checkTagText) => {
+    //     console.log('checkChanged');
+    //     var tagArray = props.tagList;
+    //     var statArray = props.tagStatusList;
+    //     console.log('og tagArray: ', tagArray);
+    //     var tagIndex = tagArray.indexOf(checkTagText);
+    //     if (tagIndex > -1) {
+    //         statArray[tagIndex] = false;
+    //         tagArray.splice(tagIndex, 1);
+    //     }
+    //     console.log('fin tagArray: ', tagArray);
+    //     props.setTagList(tagArray);
+    //     props.setTagStatusList(statArray);
+    // }
 
     function ShellItem(props) {
         return (
@@ -20,31 +33,35 @@ const FilterDropdown = (props) => {
             </div>
         );
     }
-    function CheckItem(props) {
-        return (
-            <ShellItem >
-                <input type="checkbox" />
-                {props.children}
-            </ShellItem>
-        );
-    }
+    // function CheckItem(props) {
+    //     return (
+    //         <ShellItem >
+    //             <input type="checkbox" onChange={(e) => checkChanged(props.children)} defaultChecked={defaultChecked}/>
+    //             {props.children}
+    //         </ShellItem>
+    //     );
+    // }
 
     return (
         <div className="filterdrop">
-            <form className="filt_menu_item">
+            {/* <form className="filt_menu">
                 <p className="filt_menu_title">Tags</p>
                 { 
-                    tagList.map((tagname, id) => {
+                    props.tagList.map((tagname, id) => {
                         return <CheckItem key={id} >{tagname}</CheckItem>
                     })
                 }
-            </form>
-            <form className="filt_menu_item">
+            </form> */}
+            <form className="filt_menu">
                 <p className="filt_menu_title">Timeline</p>
-                <input type="radio" id="1" name="sort_rad" value="Recent First" checked="checked" onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column'}/>
-                <label htmlFor="1">Recent First</label>
-                <input type="radio" id="2" name="sort_rad" value="Older First" onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column-reverse'}/>
-                <label htmlFor="2">Older First</label>
+                <ShellItem >
+                    <input type="radio" id="1" name="sort_rad" value="Recent First" defaultChecked onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column'}/>
+                    <label htmlFor="1">Recent First</label>
+                </ShellItem>
+                <ShellItem >
+                    <input type="radio" id="2" name="sort_rad" value="Older First" onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column-reverse'}/>
+                    <label htmlFor="2">Older First</label>
+                </ShellItem>
             </form>
         </div>
     );
