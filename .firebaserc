@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "ideahub31"
+  },
+  "targets": {
+    "ideahub31": {
+      "hosting": {
+        "brainfart": [
+          "brainfart"
+        ]
+      }
+    }
   }
 }

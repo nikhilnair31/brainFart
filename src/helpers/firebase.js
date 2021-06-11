@@ -6,6 +6,7 @@ import 'firebase/auth'
 var firebaseConfig = {
     apiKey: "AIzaSyDLDpBQenecyN8g3i6SYMkdt2dOlOhWufE",
     authDomain: "ideahub31.firebaseapp.com",
+    databaseURL: "https://ideahub31-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "ideahub31",
     storageBucket: "ideahub31.appspot.com",
     messagingSenderId: "1079537595844",
