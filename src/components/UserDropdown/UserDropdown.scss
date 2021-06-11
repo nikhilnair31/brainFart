@@ -4,40 +4,32 @@
     position: absolute;
     border: 0pc;
     border-radius: 0.3pc;
-    overflow: hidden;
     z-index: 20;
     @include themed('background-color', 'card');
-}
 
-.menu_item {
-    display: flex;
-    align-items: center;
-    border-radius: 0.3pc;
-    text-decoration: none;
-    @include themed('color', 'text');
-    @include all_transition_durations;
-    &:hover{
-        @include themed('background-color', 'inputfield');
+    .menu_item {
+        display: block;
+        text-decoration: none;
+        @include themed('color', 'text');
+        @include all_transition_durations;
+        &:hover{
+            @include themed('background-color', 'inputfield');
+        }
     }
-    .icon_img{
-        width: 2pc;
-    }
-}
 
-p.menu_item {
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-radius: 0pc 0pc 0.3pc 0.3pc;
-    text-decoration: none;
-    font-weight: bold;
-    @include themed('color', 'alttext');
-    @include themed('background-color', 'accent');
-    @include all_transition_durations;
-    &:hover{
-        @include themed('background-color', 'accentplus');
+    .main_menu_item {
+        cursor: pointer;
+        margin: 0pc;
+        padding: 1pc;
+        text-align: center;
+        border-radius: 0pc 0pc 0.3pc 0.3pc;
+        font-weight: bold;
+        @include themed('color', 'alttext');
+        @include themed('background-color', 'accent');
+        @include all_transition_durations;
+        &:hover{
+            @include themed('background-color', 'accentplus');
+        }
     }
 }
 
@@ -45,15 +37,17 @@ p.menu_item {
 @media only screen and (min-width: 600px) {
     .userdrop {
         top: 7pc;
-        transform: translateX(94%);
-    }
-    .menu_item {
-        grid-gap: 1pc;
-        margin: 0pc;
-        padding: 1pc;
-        font-size: 1pc;
-        .icon_img{
-            width: 2pc;
+        transform: translateX(106%);
+        .menu_item {
+            margin: 0pc;
+            padding: 1.5pc;
+            padding-right: 2pc;
+            padding-left: 2pc;
+            font-size: 1pc;
+        }
+        .main_menu_item {
+            margin: 0pc;
+            padding: 1pc;
         }
     }
 }
@@ -67,12 +61,16 @@ p.menu_item {
     .menu_item {
         grid-gap: 1pc;
         margin: 0pc;
-        padding: 1pc;
-        padding-left: 0.5pc;
-        padding-right: 1.5pc;
+        padding: 1.5pc;
+        padding-right: 2pc;
+        padding-left: 2pc;
         font-size: 0.8pc;
-        .icon_img{
-            width: 2pc;
-        }
+    }
+    .main_menu_item {
+        margin: 0pc;
+        padding: 1.5pc;
+        padding-right: 2pc;
+        padding-left: 2pc;
+        font-size: 0.8pc;
     }
 }
