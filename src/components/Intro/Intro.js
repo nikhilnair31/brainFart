@@ -30,7 +30,7 @@ const Intro = () => {
         <div className="intro_wrapper">
             <div className="intro">
                 <div className="intro_head">
-                    <img className="logo_img" src='./images/brainfart.png' alt="myFace"/>
+                    <img className="logo_img" src='./images/brainfart2.png' alt="myFace"/>
                     <h1 className="title" >brainFart</h1>
                     {/* <img className="personal_img" src={photoURL} alt="myFace" onClick={() => history.push('/user')}/> */}
                     <img className="personal_img" src={photoURL} alt="myFace" onClick={() => setOpenState(!openState)}/>

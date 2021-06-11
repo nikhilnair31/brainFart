@@ -16,8 +16,8 @@
     }
 
     .spinner {
-        width: 3pc;
-        height: 3pc;
+        width: 2pc;
+        height: 2pc;
         border: 0.5pc solid #fe2b5d;
         @include themed('border-left-color', 'accentplus');
         border-radius: 50%;
@@ -42,7 +42,7 @@
 //Desktop
 @media only screen and (min-width: 600px) {
     .logo_img {
-        width: 5%;
+        width: 10%;
     }
 }
 

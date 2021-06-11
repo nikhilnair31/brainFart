@@ -19,7 +19,7 @@
         - [x] Add anon button 
         - [x] If auth skipped don't allow adding ideas only reading
 * Search
-    - [ ] Add customizable filter to sort ideas
+        - [x] Add customizable filter to sort ideas
 * AddIdea
         - [x] Have textarea height increase automatically
         - [x] Have inputtext element height increase for long texts
