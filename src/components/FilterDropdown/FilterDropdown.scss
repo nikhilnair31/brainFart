@@ -7,47 +7,45 @@
     border-radius: 0.3pc;
     z-index: 15;
     @include themed('background-color', 'card');
-}
 
-.filt_menu_title{
-    border-radius: 0.3pc;
-    @include themed('color', 'alttext');
-    @include themed('background-color', 'accent');
-    @include all_transition_durations;
-}
+    .filt_menu {
+        display: flex;
+        flex-direction: column;
+        border-radius: 0.3pc;
+        @include themed('color', 'text');
+        @include all_transition_durations;
 
-.filt_menu {
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.3pc;
-    @include themed('color', 'text');
-    @include all_transition_durations;
-}
+        .filt_menu_item {
+            display: flex;
+            flex-direction: row;
+            grid-gap: 1pc;
+            padding: 1pc;
+            padding-right: 2pc;
 
-p.filt_menu {
-    margin: 0pc;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    border-radius: 0.3pc;
-    text-decoration: none;
-    font-weight: bold;
-    @include themed('color', 'alttext');
-    @include themed('background-color', 'accent');
-    @include all_transition_durations;
-    &:hover{
-        @include themed('background-color', 'accentplus');
+            .dir_sort{
+                cursor: pointer;
+                @include themed('color', 'textplus');
+                @include all_transition_durations;
+                &:hover{
+                    @include themed('color', 'text');
+                }
+                &:active{
+                    @include themed('color', 'accent');
+                }
+                &:focus{
+                    @include themed('color', 'accent');
+                }
+            }
+        }
+
+        .filt_menu_title{
+            text-align: center;
+            border-radius: 0.3pc 0.3pc 0pc 0pc;
+            @include themed('color', 'alttext');
+            @include themed('background-color', 'accent');
+            @include all_transition_durations;
+        }
     }
-}
-
-.filt_menu_item {
-    display: flex;
-    flex-direction: row;
-    grid-gap: 1pc;
-    padding: 0.75pc;
-    padding-right: 2pc;
 }
 
 //Desktop
@@ -61,11 +59,6 @@ p.filt_menu {
         margin: 0pc;
         padding: 1pc;
         font-size: 1pc;
-    }
-    .filt_menu {
-        //grid-gap: 1pc;
-        //padding-left: 1pc;
-        //font-size: 1pc;
     }
 }
 
@@ -81,11 +74,6 @@ p.filt_menu {
         font-size: 0.8pc;
     }
     .filt_menu {
-        //grid-gap: 1pc;
-        //margin: 0pc;
-        //padding: 1pc;
-        //padding-left: 1pc;
-        //padding-right: 1.5pc;
         font-size: 0.8pc;
     }
 }

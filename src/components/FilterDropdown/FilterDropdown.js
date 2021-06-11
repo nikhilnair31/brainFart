@@ -42,6 +42,10 @@ const FilterDropdown = (props) => {
     //     );
     // }
 
+    function changeSortDir(dir){
+        document.getElementById("pastcont").style.flexDirection = dir;
+    }
+
     return (
         <div className="filterdrop">
             {/* <form className="filt_menu">
@@ -53,14 +57,14 @@ const FilterDropdown = (props) => {
                 }
             </form> */}
             <form className="filt_menu">
-                <p className="filt_menu_title">Timeline</p>
+                <p className="filt_menu_title">Sort Timeline</p>
                 <ShellItem >
-                    <input type="radio" id="1" name="sort_rad" value="Recent First" defaultChecked onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column'}/>
-                    <label htmlFor="1">Recent First</label>
+                    {/* <input type="radio" id="1" name="sort_rad" value="Recent First" onChange={(e)=>changeSortDir('column')} defaultChecked/> */}
+                    <label htmlFor="1" className="dir_sort" id="nor_sort" onClick={(e)=>changeSortDir('column')}>Recent First</label>
                 </ShellItem>
                 <ShellItem >
-                    <input type="radio" id="2" name="sort_rad" value="Older First" onChange={()=>document.getElementById("pastcont").style.flexDirection = 'column-reverse'}/>
-                    <label htmlFor="2">Older First</label>
+                    {/* <input type="radio" id="2" name="sort_rad" value="Older First" onChange={(e)=>changeSortDir('column-reverse')}/> */}
+                    <label htmlFor="2" className="dir_sort" id="rev_sort" onClick={(e)=>changeSortDir('column-reverse')}>Older First</label>
                 </ShellItem>
             </form>
         </div>

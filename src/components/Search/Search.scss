@@ -11,6 +11,7 @@
     .search_img {
         width: 3pc;
         border-radius: 0.7pc 0pc 0pc 0.7pc;
+        @include all_transition_durations;
         @include themed('background-color', 'inputfield');
     }
 
@@ -19,13 +20,20 @@
         border: 0pc;
         width: 27pc;
         height: 2pc;
+        @include all_transition_durations;
         @include themed('color', 'inputtext');
         @include themed('background-color', 'inputfield');
     }
 
     .filter_img {
         width: 3pc;
+        cursor: pointer;
         border-radius: 0pc 0.7pc 0.7pc 0pc;
-        @include themed('background-color', 'inputfield');
+        @include all_transition_durations;
+        @include themed('background-color', 'card');
+        &:hover{
+            filter: invert(100%);
+            -webkit-filter: invert(100%);
+        }
     }
 }

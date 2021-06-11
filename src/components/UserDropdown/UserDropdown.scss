@@ -30,7 +30,7 @@ p.menu_item {
     justify-content: center;
     display: flex;
     align-items: center;
-    border-radius: 0.3pc;
+    border-radius: 0pc 0pc 0.3pc 0.3pc;
     text-decoration: none;
     font-weight: bold;
     @include themed('color', 'alttext');
