@@ -30,6 +30,7 @@ const Confirm = () => {
         console.log(`delOrCancel\ntoDel: ${toDel} | postID: ${postID}`);
         if (toDel) {
             dbref.collection('posts').doc(postID).delete();
+            document.getElementById(postID).remove();
             toast("Idea deleted.", { position: "bottom-left", autoClose: 3000, hideProgressBar: false, closeOnClick: true,
                 pauseOnHover: true, draggable: false, progress: undefined, });
         }

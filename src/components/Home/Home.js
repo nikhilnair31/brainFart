@@ -47,7 +47,7 @@ const Home = (props) => {
             footRef.current.style.position = "relative";
 
         //changing onsnapshot to getfetch avoids retrieveing full data on up/down voting..collection("posts")
-        dbref.collection("posts").orderBy("utc", "desc").onSnapshot(snapshot => {
+        dbref.collection("posts").orderBy("utc", "desc").get().then(snapshot => {
             if (!isCancelled) {
                 setIsCancelled(true);
                 setPosts( snapshot.docs.map( doc => ({id: doc.id, post: doc.data()})) );

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useCallback }  from 'react';
+import React, { useContext, useEffect, useState, useCallback }  from 'react';
 import { UserContext } from '../../../providers/UserProvider';
 import { ConfirmContext } from '../../../providers/ConfirmProvider';
 import { dbref } from '../../../helpers/firebase.js';
@@ -9,6 +9,7 @@ const Card = (props) => {
     const {conf, pid} = useContext(ConfirmContext);
     const [showConf, setShowConf] = conf;
     const [postID, setPostID] = pid;
+    const [localVotes, setLocalVotes] = useState(props.post_upvotes);
 
     const addColorToVoted = () => {
         //console.log(`addColorToVoted | props.post_id: ${props.post_id}`);
@@ -70,7 +71,7 @@ const Card = (props) => {
                 //upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
             }
         });
-    });
+    }, [localVotes]);
 
     const voteThisIdea = (inverter) => {
         var voteDir = 0;
@@ -92,14 +93,16 @@ const Card = (props) => {
                     utc:Date.now(),
                     voteDirection: inverter
                 })
-                dbref.collection('posts').doc(props.post_id).update({'upvotes': props.post_upvotes + (inverter*1)});
+                dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*1)});
+                setLocalVotes( localVotes + (inverter*1) );
             }
             else{
                 //console.log(`has already voted`);
                 if(voteDir === inverter){
                     //console.log(`voteDir = inverter so delete vote from sub-coll to nullify vote`);
                     dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
-                    dbref.collection('posts').doc(props.post_id).update({'upvotes': props.post_upvotes - (voteDir*1)});
+                    dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes - (voteDir*1)});
+                    setLocalVotes( localVotes - (inverter*1) );
                 }
                 else if(voteDir !== inverter){
                     //console.log(`voteDir != inverter so delete vote from sub-coll and vote in reverse again`);
@@ -109,10 +112,11 @@ const Card = (props) => {
                         utc:Date.now(),
                         voteDirection: inverter
                     })
-                    dbref.collection('posts').doc(props.post_id).update({'upvotes': props.post_upvotes + (inverter*2)});
+                    dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*2)});
+                    setLocalVotes( localVotes + (inverter*2) );
                 }
             }
-            //console.log(`before addColorToVoted: ${props.post_id}`);
+            console.log(`localVotes: ${localVotes}`);
             addColorToVoted()
         });
     }
@@ -173,7 +177,7 @@ const Card = (props) => {
                 <button className="upvote_button" onClick={() => voteThisIdea(1)}>
                     <img src={'./images/up192.png'}  alt="upvote icon"/>
                 </button>
-                <p className="votes_text" >{props.post_upvotes}</p>
+                <p className="votes_text" >{localVotes}</p>
                 <button className="downvote_button" onClick={() => voteThisIdea(-1)}>
                     <img src={'./images/down192.png'}  alt="downvote icon"/>
                 </button>
