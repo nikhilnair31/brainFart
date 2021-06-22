@@ -116,7 +116,7 @@ const Card = (props) => {
                     setLocalVotes( localVotes + (inverter*2) );
                 }
             }
-            console.log(`localVotes: ${localVotes}`);
+            //console.log(`localVotes: ${localVotes}`);
             addColorToVoted()
         });
     }
