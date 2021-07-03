@@ -18,7 +18,7 @@ const AddIdea = () =>{
         // console.log(`ADDIDEA\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
         if (user !== null) {
             if(user.isAnonymous) setShowPosting(false);
-            else setShowPosting(true);
+            else setShowPosting(false);
 
             if(user.displayName !== null) setDisplayName(user.displayName);
             else setDisplayName('');
