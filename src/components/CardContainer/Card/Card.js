@@ -13,7 +13,8 @@ const Card = (props) => {
 
     const addColorToVoted = () => {
         //console.log(`addColorToVoted | props.post_id: ${props.post_id}`);
-        dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
+        dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
+        // dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
             var voteDir = 0;
             var uidInVotes = false;
             for(var i=0; i<snapshot.docs.length; i++){
@@ -40,11 +41,13 @@ const Card = (props) => {
                 //upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
             }
         });
+        // dbref.collection("posts").doc(props.post_id).collection('votes').unsubscribe();
     }
 
     useEffect(() => {  
         //console.log(`useEffect | props.post_id: ${props.post_id}`);
-        dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
+        dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
+        // dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
             var voteDir = 0;
             var uidInVotes = false;
             for(var i=0; i<snapshot.docs.length; i++){
@@ -71,6 +74,7 @@ const Card = (props) => {
                 //upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
             }
         });
+        // dbref.collection("posts").doc(props.post_id).collection('votes').unsubscribe();
     }, [localVotes]);
 
     const voteThisIdea = (inverter) => {
