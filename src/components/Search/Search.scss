@@ -20,6 +20,7 @@
         border: 0pc;
         width: 27pc;
         height: 2pc;
+        border-radius: 0pc 0.7pc 0.7pc 0pc;
         @include all_transition_durations;
         @include themed('color', 'inputtext');
         @include themed('background-color', 'inputfield');

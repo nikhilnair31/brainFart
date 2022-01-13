@@ -13,7 +13,7 @@ const Intro = () => {
     useEffect(() => {
         // console.log(`INTRO\n is user === null? ${user === null}\n user: ${JSON.stringify(user)}\n`);
         if (user === null) {
-            console.log(`INTRO\n loggedOut true. Now send to /login.\n user: ${JSON.stringify(user)}\n`);
+          //console.log(`INTRO\n loggedOut true. Now send to /login.\n user: ${JSON.stringify(user)}\n`);
             history.push('/');
         }
         else{

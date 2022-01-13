@@ -27,7 +27,7 @@ const Confirm = () => {
     }
 
     const delOrCancel = (toDel) => {
-        console.log(`delOrCancel\ntoDel: ${toDel} | postID: ${postID}`);
+      //console.log(`delOrCancel\ntoDel: ${toDel} | postID: ${postID}`);
         if (toDel) {
             dbref.collection('posts').doc(postID).delete();
             document.getElementById(postID).remove();

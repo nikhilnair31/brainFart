@@ -5,12 +5,12 @@ import './UserDropdown.scss';
 const UserDropdown = () => {
     const logOut = () => {
         auth.signOut().then(()=> {
-            console.log(`USER res\n auth: ${JSON.stringify(auth)}\n `);
+          //console.log(`USER res\n auth: ${JSON.stringify(auth)}\n `);
             //history.push('/');
         }).catch((error) => {
-            console.log(`USER error\n error.message: ${JSON.stringify(error.message)}\n `);
+          //console.log(`USER error\n error.message: ${JSON.stringify(error.message)}\n `);
         })
-        console.log(`USER initial\n auth: ${JSON.stringify(auth)}\n `);
+      //console.log(`USER initial\n auth: ${JSON.stringify(auth)}\n `);
     }
 
     function DropdownItem(props) {

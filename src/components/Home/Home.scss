@@ -12,6 +12,24 @@
     }
 }
 
+.more_ideas {
+    text-align: center;
+    border-radius: 0.7pc;
+    .more_ideas_button {
+        border: 0pc;
+        border-radius: 0.3pc;
+        width: 20vh;
+        cursor: pointer;
+        @include themed('color', 'text');
+        @include themed('background-color', 'inputfield');
+        @include all_transition_durations;
+        &:hover{
+            @include themed('color', 'text');
+            @include themed('background-color', 'accent');
+        }
+    }
+}
+
 .page_container{
     padding: 1pc;
 
@@ -37,6 +55,12 @@
 
 //Desktop
 @media only screen and (min-width: 600px) {
+    .more_ideas {
+        // margin: 0pc 0pc 1pc 0pc;
+        .more_ideas_button {
+            height: 3pc;
+        }
+    }
     .page_container{
         .page_title {
             font-size: 1.5pc;
@@ -46,6 +70,12 @@
 
 //Mobile
 @media only screen and (max-width: 600px) {
+    .more_ideas {
+        // margin: 0pc 0pc 1pc 0pc;
+        .more_ideas_button {
+            height: 5vh;
+        }
+    }
     .empty_item {
         margin-bottom: 2.6pc;
     }

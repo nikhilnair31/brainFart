@@ -8,34 +8,34 @@ const LogIn = () => {
 
     useEffect(() => {
         if (user !== null) {
-            console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
+          //console.log(`LOGIN\n loggedIn true. Now send to /home.\n`);
         }
     }, [user])
 
     const signInWithGoogle = () => {
         auth.signInWithPopup(googleProvider).then((res) => {
-            console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
+          //console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
         }).catch((error) => {
-            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+          //console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
         })
-        console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n`);
+      //console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n`);
     }
 
     const signInWithTwitter = () => {
         auth.signInWithPopup(twitterProvider).then((res) => {
-            console.log(`LOGIN\n res.credential.accessToken: ${res.credential.accessToken}\n res.user: ${JSON.stringify(res.user)}`);
+          //console.log(`LOGIN\n res.credential.accessToken: ${res.credential.accessToken}\n res.user: ${JSON.stringify(res.user)}`);
         }).catch((error) => {
-            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+          //console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
         })
     }
 
     const signInWithAnon = () => {
         auth.signInAnonymously().then((res) => {
-            console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
+          //console.log(`LOGIN res\n auth: ${JSON.stringify(auth)}\n `);
         }).catch((error) => {
-            console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
+          //console.log(`LOGIN error\n error.message: ${JSON.stringify(error.message)}\n `);
         })
-        console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n `);
+      //console.log(`LOGIN initial\n auth: ${JSON.stringify(auth)}\n `);
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback }  from 'react';
+import React, { useContext, useEffect, useState }  from 'react';
 import { UserContext } from '../../../providers/UserProvider';
 import { ConfirmContext } from '../../../providers/ConfirmProvider';
 import { dbref } from '../../../helpers/firebase.js';
@@ -10,119 +10,61 @@ const Card = (props) => {
     const [showConf, setShowConf] = conf;
     const [postID, setPostID] = pid;
     const [localVotes, setLocalVotes] = useState(props.post_upvotes);
-
-    const addColorToVoted = () => {
-        //console.log(`addColorToVoted | props.post_id: ${props.post_id}`);
-        dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
-        // dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
-            var voteDir = 0;
-            var uidInVotes = false;
-            for(var i=0; i<snapshot.docs.length; i++){
-                if(snapshot.docs[i].id === user.uid){
-                    uidInVotes = true; 
-                    voteDir = snapshot.docs[i].data().voteDirection;
-                    //console.log(`addColorToVoted\n voteDir:${voteDir} \n uidInVotes:${uidInVotes}`);
-                    break;
-                }
-            }
-            if(uidInVotes){
-                //console.log(`uidInVotes true | voteDir: ${voteDir}`);
-                if(voteDir === 1){
-                    document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('upvote_button')[0].style.backgroundColor = "#fe2b5d";
-                }
-                else if(voteDir === -1){
-                    document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('downvote_button')[0].style.backgroundColor = "#fe2b5d";
-                }
-            }
-            else if(voteDir === 0){
-                //console.log(`voteDir === 0 | voteDir: ${voteDir}`);
-                document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('upvote_button')[0].style.backgroundColor = "rgb(45, 45, 45)";
-                document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('downvote_button')[0].style.backgroundColor = "rgb(45, 45, 45)";
-                //upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
-            }
-        });
-        // dbref.collection("posts").doc(props.post_id).collection('votes').unsubscribe();
-    }
+    const [voteDir, setvoteDir] = useState(0);
+    const [uidInVotes, setuidInVotes] = useState(false);
 
     useEffect(() => {  
-        //console.log(`useEffect | props.post_id: ${props.post_id}`);
-        dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
-        // dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
-            var voteDir = 0;
-            var uidInVotes = false;
+        // console.log(`useEffect | props.post_id: ${props.post_id}`);
+        dbref.collection("posts").doc(props.post_id).collection('votes').onSnapshot(snapshot => {
             for(var i=0; i<snapshot.docs.length; i++){
                 if(snapshot.docs[i].id === user.uid){
-                    uidInVotes = true; 
-                    voteDir = snapshot.docs[i].data().voteDirection;
-                    //console.log(`addColorToVoted\n props.post_id:${props.post_id} | voteDir:${voteDir} | uidInVotes:${uidInVotes} | user.uid:${user.uid}\n`);
+                    setuidInVotes(true);
+                    setvoteDir(snapshot.docs[i].data().voteDirection);
                     break;
                 }
-            }
-            if(uidInVotes){
-                //console.log(`uidInVotes true | voteDir: ${voteDir}`);
-                if(voteDir === 1){
-                    document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('upvote_button')[0].style.backgroundColor = "#fe2b5d";
-                }
-                else if(voteDir === -1){
-                    document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('downvote_button')[0].style.backgroundColor = "#fe2b5d";
-                }
-            }
-            else if(voteDir === 0){
-                //console.log(`voteDir === 0 | voteDir: ${voteDir}`);
-                document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('upvote_button')[0].style.backgroundColor = "rgb(45, 45, 45)";
-                document.getElementById(props.post_id).getElementsByClassName('button_section')[0].getElementsByClassName('downvote_button')[0].style.backgroundColor = "rgb(45, 45, 45)";
-                //upRef.current.style.backgroundColor = "rgb(45, 45, 45)";
             }
         });
-        // dbref.collection("posts").doc(props.post_id).collection('votes').unsubscribe();
-    }, [localVotes]);
+    }, []);
 
     const voteThisIdea = (inverter) => {
-        var voteDir = 0;
-        var uidInVotes = false;
-        dbref.collection("posts").doc(props.post_id).collection('votes').get().then(snapshot => {
-            for(var i=0; i<snapshot.docs.length; i++){
-                if(snapshot.docs[i].id === user.uid){
-                    uidInVotes = true; 
-                    voteDir = snapshot.docs[i].data().voteDirection;
-                    //console.log(`voteThisIdea\n user.uid:${user.uid} | uidInVotes:${uidInVotes} | voteDir:${voteDir}\n`);
-                    break;
-                }
+        // console.log(`voteThisIdea - inverter:${inverter}\n voteDir:${voteDir} - uidInVotes:${uidInVotes}
+        // \n svoteDir:${svoteDir} - suidInVotes:${suidInVotes}`);
+        if(!uidInVotes){
+            // console.log(`has not already voted`);
+            setuidInVotes(true);
+            setvoteDir(inverter);
+            dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).set({
+                displayName: user.displayName,
+                utc:Date.now(),
+                voteDirection: inverter
+            })
+            dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*1)});
+            setLocalVotes( localVotes + (inverter*1) );
+        }
+        else{
+          //console.log(`has already voted`);
+            if(voteDir === inverter){
+              //console.log(`voteDir = inverter so delete vote from sub-coll to nullify vote`);
+                setuidInVotes(false);
+                setvoteDir(0);
+                dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
+                dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes - (voteDir*1)});
+                setLocalVotes( localVotes - (inverter*1) );
             }
-            //console.log(`voteThisIdea\n uidInVotes: ${uidInVotes}\n user.uid: ${user.uid} \n props.post_id: ${props.post_id} \n voteDir: ${voteDir} \n inverter: ${inverter}`);
-            if(!uidInVotes){
-                console.log(`has not already voted`);
+            else if(voteDir !== inverter){
+              //console.log(`voteDir != inverter so delete vote from sub-coll and vote in reverse again`);
+                setuidInVotes(true);
+                setvoteDir(inverter);
+                dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
                 dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).set({
                     displayName: user.displayName,
                     utc:Date.now(),
                     voteDirection: inverter
                 })
-                dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*1)});
-                setLocalVotes( localVotes + (inverter*1) );
+                dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*2)});
+                setLocalVotes( localVotes + (inverter*2) );
             }
-            else{
-                //console.log(`has already voted`);
-                if(voteDir === inverter){
-                    //console.log(`voteDir = inverter so delete vote from sub-coll to nullify vote`);
-                    dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
-                    dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes - (voteDir*1)});
-                    setLocalVotes( localVotes - (inverter*1) );
-                }
-                else if(voteDir !== inverter){
-                    //console.log(`voteDir != inverter so delete vote from sub-coll and vote in reverse again`);
-                    dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).delete();
-                    dbref.collection("posts").doc(props.post_id).collection('votes').doc(user.uid).set({
-                        displayName: user.displayName,
-                        utc:Date.now(),
-                        voteDirection: inverter
-                    })
-                    dbref.collection('posts').doc(props.post_id).update({'upvotes': localVotes + (inverter*2)});
-                    setLocalVotes( localVotes + (inverter*2) );
-                }
-            }
-            //console.log(`localVotes: ${localVotes}`);
-            addColorToVoted()
-        });
+        }
     }
 
     const showConfirmation = () => {
@@ -178,11 +120,11 @@ const Card = (props) => {
                 <h2 className="idea_text" >{props.post_idea_text}</h2>
             </div>
             <div className="button_section">
-                <button className="upvote_button" onClick={() => voteThisIdea(1)}>
+                <button className="upvote_button" style={{backgroundColor: uidInVotes && voteDir === 1 ? "#fe2b5d" : "rgb(45, 45, 45)"}} onClick={() => voteThisIdea(1)}>
                     <img src={'./images/up192.png'}  alt="upvote icon"/>
                 </button>
                 <p className="votes_text" >{localVotes}</p>
-                <button className="downvote_button" onClick={() => voteThisIdea(-1)}>
+                <button className="downvote_button" style={{backgroundColor: uidInVotes && voteDir === -1 ? "#fe2b5d" : "rgb(45, 45, 45)"}} onClick={() => voteThisIdea(-1)}>
                     <img src={'./images/down192.png'}  alt="downvote icon"/>
                 </button>
             </div>

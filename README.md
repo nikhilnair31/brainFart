@@ -1,11 +1,14 @@
 # To-Do
 * General
+    - [ ] Include an automatic scroll end idea load instead of button?
+    - [ ] Find way to query random doc in Firestore to enable random idea component again
+    - [ ] A type o ElastiSearch that queries entire cllection as Search progresses.
         - [x] Figure out how to avoid seeing login page on consecutive loads
 * Home page
 	- [ ] Show new idea added locally
         - [x] Show random idea on top of older ideas with quick up/downvotes
         - [x] Fix data flow to avoid refetching full collection's data on up/downvoting
-        - [x Have footer stay at botom of page even while searching
+        - [x] Have footer stay at botom of page even while searching
         - [x] Fix logout popup to user's image for responsive
         - [x] Center brainFart text
         - [x] Added delete confirmation component
