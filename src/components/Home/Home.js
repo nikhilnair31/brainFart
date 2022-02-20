@@ -114,10 +114,10 @@ const Home = (props) => {
             <Search setSearchedIdea={setSearchedIdea} fullfiltpost={filteredPosts} tagList={tagList} setTagList={setTagList} tagStatusList={tagStatusList} setTagStatusList={setTagStatusList}/>
             <AddIdea />
             {
-                // (randIdea !== null) && (searchedIdea.length <= 0) &&
-                // <CardContainer heading_text='Random Idea' cardcont_id='randcont'>
-                //     <RandCard key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} setGotRandIdea={setGotRandIdea} />
-                // </CardContainer>
+                (randIdea !== null) && (searchedIdea.length <= 0) &&
+                <CardContainer heading_text='Random Idea' cardcont_id='randcont'>
+                    <RandCard key={randIdea.id} post_id={randIdea.id} post_utc={randIdea.post.utc} post_idea_text={randIdea.post.idea} post_idea_tag={randIdea.post.tag} op_uid={randIdea.post.uid} op_displayName={randIdea.post.displayName} post_upvotes={randIdea.post.upvotes} setGotRandIdea={setGotRandIdea} />
+                </CardContainer>
             }
             {
                 (filteredPosts.length > 0) && 

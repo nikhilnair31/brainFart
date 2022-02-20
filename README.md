@@ -1,4 +1,13 @@
-# To-Do
+<img src="./public/brainFart.png"  />
+
+## What is brainFart?
+It's a social platform for sharing ideas for games, apps, startups etc. Allows users to upvote or downvote ideas by their utility. Also used an AWS Lambda function that hooks into OpenAI's GPT3 API on a schedule, to generate ideas based on a variety of examples fed to it as prompts based on data scraped from Reddit.
+
+## To-Dos
+<details>
+<summary>To-Dos</summary>
+
+## To-Dos
 * General
     - [ ] Include an automatic scroll end idea load instead of button?
     - [ ] Find way to query random doc in Firestore to enable random idea component again
@@ -43,5 +52,9 @@
     - [ ] Add XML sitemap for SEO
     - [ ] Consider adding Next.js for SSR
     - [ ] Check what robots.txt
+        - [ ] Add XML sitemap for SEO
+    - [ ] Consider adding Next.js for SSR
+    - [ ] Check what robots.txt
         - [x] Check out React routers?
         - [x] Check how to add checkmarks in README
+</details>
